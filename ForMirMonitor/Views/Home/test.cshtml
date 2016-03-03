@@ -37,5 +37,27 @@
         <a class="carousel-control right" href="#myCarousel"
            data-slide="next">&rsaquo;</a>
     </div>
-
+    <!--<button id="download" type="button" class="btn btn-default">点击下载</button>-->
 </body>
+
+<script>
+    $(document).ready(function () {
+
+        $("#download").click(function () {
+
+
+            var path = "http://pic23.nipic.com/20120817/10703279_193118224000_2.jpg";
+            var filename="testfile";
+            $.ajax({
+                type: "post",
+                url: "/home/DownLoad",
+                data: {strName:filename,strPath:path },
+                dataType: "json",
+                success: function (data) {
+                    alert("下载完成");
+                }
+            });
+            alert(1);
+        });
+    });
+</script>

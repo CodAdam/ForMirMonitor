@@ -30,6 +30,8 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>*@
+
+
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
@@ -37,9 +39,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
@@ -70,7 +72,7 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img alt="" src="~/img/slide1.png" />
+                        <img alt="" class="img-rounded" src="~/img/slide1.png" />
                         <div class="carousel-caption">
                             <h4>
                                 棒球
@@ -81,7 +83,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="~/img/slide2.png" />
+                        <img alt=""class="img-rounded" src="~/img/slide2.png" />
                         <div class="carousel-caption">
                             <h4>
                                 冲浪
@@ -92,7 +94,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="~/img/slide3.png" />
+                        <img alt="" class="img-rounded" src="~/img/slide3.png" />
                         <div class="carousel-caption">
                             <h4>
                                 自行车
@@ -106,27 +108,6 @@
             </div>
         </div>
     </div>
-    <!--<button id="download" type="button" class="btn btn-default">点击下载</button>-->
+    
 </div>
 
-<script>
-    $(document).ready(function () {
-
-        $("#download").click(function () {
-
-
-            var path = "http://pic23.nipic.com/20120817/10703279_193118224000_2.jpg";
-            var filename="testfile";
-            $.ajax({
-                type: "post",
-                url: "/home/DownLoad",
-                data: {strName:filename,strPath:path },
-                dataType: "json",
-                success: function (data) {
-                    alert("下载完成");
-                }
-            });
-            alert(1);
-        });
-    });
-</script>
