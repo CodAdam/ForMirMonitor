@@ -36,6 +36,11 @@ namespace ForMirMonitor.Controllers
             return View();
         }
 
+        public ActionResult InfoCommit()
+        {
+            return View("Index");
+        }
+
         public void DownLoad(string strName, string strPath)
         {
             string fileName = strName;//客户端保存的文件名

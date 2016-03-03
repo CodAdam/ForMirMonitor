@@ -14,8 +14,11 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
+
+
+
 <div class="container-fluid">
-    <div class="row-fluid">
+    <div class="row-fluid" >
         <div class="span12">
             <ul class="nav nav-pills">
                 <li class="">
@@ -27,29 +30,107 @@
                 <li>
                     <a href="../Search/Index">信息查询</a>
                 </li>
-                <li class="pull-right">
-                    <button type="button" class="btn btn-default btn-lg">
-                        <span class="glyphicon icon-wrench"></span>
-                    </button>
-                </li>
             </ul>
-
         </div>
-        <span class="label">学号</span>
-        <span class="label">qq</span>
-        <span class="label">svn</span>
-        <div class="form-group">
-            <select class="form-control">
-                <option value="">默认选择</option>
-            </select>
+    </div>
+    <div class="panel panel-primary" style="width:600px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">采集单</h3>
+        </div>
+        <div class="panel-body">
+            <div style="padding: 50px 50px 10px;">
+                <form class="bs-example bs-example-form" role="form" action="~/Home/InfoCommit">
+                    <div class="input-group input-group-sm ">
+                        <span class="input-group-addon">&nbsp;QQ&nbsp;</span>
+                        <input type="text" class="form-control" placeholder="191047321" />
+                        <span style="color:Highlight;display:none"> * 请确认QQ输入正确</span>
+                    </div>
+
+                    <br>
+                    <div class="input-group input-group-sm ">
+                        <span class="input-group-addon">&nbsp;&nbsp;ID&nbsp;&nbsp;</span>
+                        <input type="text" class="form-control" placeholder="22-Adam-男-北京">
+                        <span style="color:Highlight;display:none"> * 群昵称</span>
+                    </div>
+                    <br>
+                    <div class="input-group input-group-sm ">
+                        <span class="input-group-addon">Tag&nbsp;</span>
+                        <select class="form-control">
+                            <option value="">- 请选择 -</option>
+                            <option value="">- 前50号学员参加第五期高级班 -</option>
+                            <option value="">- 广州区线下聚会活动 -</option>
+                        </select>
+                        <span style="color:Highlight;display:none"> * 请选择标签</span>
+                    </div>
+                    <br>
+                    <div class="input-group input-group-sm ">
+                        <span class="input-group-addon">Tips</span>
+                        <input type="text" class="form-control" placeholder="svn：Cod_Adam">
+                        <span style=""></span>
+                    </div>
+                    <br>
+                    <div class="input-group input-group-sm ">
+                        <button type="submit" class="btn btn-primary" style="width:326px" >Commit</button>
+                    </div>
+                    
+
+                </form>
+            </div>
         </div>
     </div>
 
-    <div class="alert alert-warning alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-            &times;
-        </button>
-        警告！请不要提交。
+   <!-- <div class="carousel slide pull-left" id="carousel-853493" style="width:600px ">
+        <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#carousel-853493">
+            </li>
+            <li data-slide-to="1" data-target="#carousel-853493">
+            </li>
+            <li data-slide-to="2" data-target="#carousel-853493">
+            </li>
+        </ol>
+        <div class="carousel-inner pull-left">
+            <div class="item active">
+                <img alt="" class="img-rounded" src="~/img/slide1.png" />
+                <div class="carousel-caption">
+                    <h4>
+                        棒球
+                    </h4>
+                    <p>
+                        棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" class="img-rounded" src="~/img/slide2.png" />
+                <div class="carousel-caption">
+                    <h4>
+                        冲浪
+                    </h4>
+                    <p>
+                        冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" class="img-rounded" src="~/img/slide3.png" />
+                <div class="carousel-caption">
+                    <h4>
+                        自行车
+                    </h4>
+                    <p>
+                        以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a data-slide="prev" href="#carousel-853493" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#carousel-853493" class="right carousel-control">›</a>
     </div>
+</div>-->
+<div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    警告！请不要提交。
 </div>
