@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FMM.BLL", "FMM.BLL", "{B96D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FMM.Service", "FMM.Service", "{94856EC9-4F95-4A8F-B704-A102D1C724BA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FMM.ReferenceLib", "FMM.ReferenceLib", "{C42B85EB-2189-44B5-97AF-41331F52ECF3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.BLL.Statistics", "FMM.BLL.Statistics\FMM.BLL.Statistics.csproj", "{4E2BF1D2-49C0-4E94-97DA-8C8A4A6A12F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.DAL.Statistics", "FMM.DAL.Statistics\FMM.DAL.Statistics.csproj", "{B4DEEE59-480C-4A29-A109-C62624B8491F}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.Model.Statistics", "FMM.Model.Statistics\FMM.Model.Statistics.csproj", "{2F037D3B-B92E-4E43-BFBC-C7E36CE8951D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.Service.Statistics", "FMM.Service.Statistics\FMM.Service.Statistics.csproj", "{181368E7-91C6-4781-B7D6-4509B635340D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FMM.Core", "FMM.Core", "{9637E709-3E2E-491A-B9D4-C255723D5D5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
