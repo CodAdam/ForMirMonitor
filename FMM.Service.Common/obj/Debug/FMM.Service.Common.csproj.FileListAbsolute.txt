@@ -3,3 +3,8 @@ E:\ForMirMonitor\FMM.Service.Common\bin\Debug\FMM.Service.Common.dll
 E:\ForMirMonitor\FMM.Service.Common\bin\Debug\FMM.Service.Common.pdb
 E:\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.dll
 E:\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.pdb
+D:\ForMirMonitor\FMM.Service.Common\bin\Debug\FMM.Service.Common.dll
+D:\ForMirMonitor\FMM.Service.Common\bin\Debug\FMM.Service.Common.pdb
+D:\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.csprojResolveAssemblyReference.cache
+D:\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.dll
+D:\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.pdb

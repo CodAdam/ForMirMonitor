@@ -44,7 +44,7 @@ namespace ForMirMonitor.Controllers
             try
             {
                 string seFrom = "ForMirMonitor@163.com"; 
-                string seTo = "447173174@qq.com";
+                string seTo = "329996324@qq.com";
                 SendEmail se = new SendEmail(seTo, seFrom, "From ForMirMoniter", "Dear "+ seTo+":\n 以下是您的订阅信息，如有附件请注意查收。\n祝您愉快~");
                 string filePath = Request.PhysicalApplicationPath + "Download\\Commit_STATModel.xlsx";
                 se.Attachments(filePath);
