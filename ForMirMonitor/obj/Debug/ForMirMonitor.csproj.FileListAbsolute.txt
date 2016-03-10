@@ -317,3 +317,7 @@ D:\ForMirMonitor\ForMirMonitor\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAcco
 D:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.csprojResolveAssemblyReference.cache
 D:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.dll
 D:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Common.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Common.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Model.Statistics.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Model.Statistics.pdb

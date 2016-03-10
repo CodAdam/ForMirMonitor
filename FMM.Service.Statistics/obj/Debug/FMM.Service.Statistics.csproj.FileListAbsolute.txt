@@ -63,3 +63,6 @@ D:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\zh-Hans\EntityFramework.SqlSer
 D:\ForMirMonitor\FMM.Service.Statistics\obj\Debug\FMM.Service.Statistics.csprojResolveAssemblyReference.cache
 D:\ForMirMonitor\FMM.Service.Statistics\obj\Debug\FMM.Service.Statistics.dll
 D:\ForMirMonitor\FMM.Service.Statistics\obj\Debug\FMM.Service.Statistics.pdb
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.Model.Statistics.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.Model.Statistics.pdb
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\obj\Debug\FMM.Service.Statistics.csprojResolveAssemblyReference.cache

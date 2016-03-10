@@ -213,6 +213,8 @@
     <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SearchViewListModels.cs" />
+    <Compile Include="ViewModels\SearchViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
@@ -301,6 +303,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FMM.Model.Statistics\FMM.Model.Statistics.csproj">
+      <Project>{2f037d3b-b92e-4e43-bfbc-c7e36ce8951d}</Project>
+      <Name>FMM.Model.Statistics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FMM.Service.Common\FMM.Service.Common.csproj">
       <Project>{37110db2-7b1d-4b5a-874c-308912876f6f}</Project>
       <Name>FMM.Service.Common</Name>

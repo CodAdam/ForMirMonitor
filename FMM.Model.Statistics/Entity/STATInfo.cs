@@ -22,7 +22,7 @@ namespace FMM.Model.Statistics
         /// 分组编号
         /// </summary>
         [DataMember]
-        public int? intGroupNo { get; set; }
+        public int? GroupNo { get; set; }
 
         /// <summary>
         /// ID

@@ -64,3 +64,5 @@ D:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\zh-Hans\EntityFramework.SqlServer.
 D:\ForMirMonitor\FMM.DAL.Statistics\obj\Debug\FMM.DAL.Statistics.csprojResolveAssemblyReference.cache
 D:\ForMirMonitor\FMM.DAL.Statistics\obj\Debug\FMM.DAL.Statistics.dll
 D:\ForMirMonitor\FMM.DAL.Statistics\obj\Debug\FMM.DAL.Statistics.pdb
+D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.dll
+D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.pdb

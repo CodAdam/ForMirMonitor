@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.ComponentModel;
 
-namespace ForMirMonitor.Models
+namespace ForMirMonitor.ViewModels
 {
     public class SearchViewModels
     {
+           
         /// <summary>
         /// 主键统计事件ID
         /// </summary>
@@ -27,7 +31,7 @@ namespace ForMirMonitor.Models
         /// 分组名
         /// </summary>
         [DisplayName("GroupName")]
-        public int? GroupName { get; set; }
+        public string GroupName { get; set; }
 
         /// <summary>
         /// ID
