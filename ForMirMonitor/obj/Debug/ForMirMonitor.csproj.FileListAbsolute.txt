@@ -321,3 +321,10 @@ D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Common.dll
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Common.pdb
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Model.Statistics.dll
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Model.Statistics.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Common.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Statistics.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.Configuration.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.ServiceLocation.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Common.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Statistics.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.Configuration.xml

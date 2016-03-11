@@ -66,3 +66,5 @@ D:\ForMirMonitor\FMM.BLL.Statistics\obj\Debug\FMM.BLL.Statistics.dll
 D:\ForMirMonitor\FMM.BLL.Statistics\obj\Debug\FMM.BLL.Statistics.pdb
 D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Model.Statistics.dll
 D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Model.Statistics.pdb
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Common.dll
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Common.pdb

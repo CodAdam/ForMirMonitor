@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
+using FMM.Common.Paging;
 
 namespace FMM.Service.Statistics
 {
@@ -19,19 +20,28 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="STATId"></param>
         /// <returns></returns>
-        STATInfo GetSTATInfoByPrimarykey(long STATId);
+        STATInfo getSTATInfoByPrimarykey(long STATId);
         /// <summary>
-        /// 通过RMANumber获取RMATransaction
+        /// 通过QQ获取STATInforList
         /// </summary>
         /// <param name="QQ"></param>
         /// <returns></returns>
-        List<STATInfo> GetSTATInfoByRMANumber(long QQ);
+        List<STATInfo> getSTATInfoByRMANumber(long QQ);
         /// <summary>
-        /// 根据条件获取RMATransaction的List
+        /// 根据条件获取STATinfo的List
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        List<STATInfo> STATInfoList(STATInfoSearchCriteria criteria);
+        List<STATInfo> getSTATInfoListbyCriteria(STATInfoSearchCriteria criteria);
+
+
+        /// <summary>
+        /// 根据条件获取STATInfoPagerList
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria);
+
 
         /// <summary>
         /// 作废STATInfo

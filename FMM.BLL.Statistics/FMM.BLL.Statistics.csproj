@@ -84,6 +84,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\FMM.Common\FMM.Common.csproj">
+      <Project>{be53a228-28bc-42c2-8487-bd0124acc8d2}</Project>
+      <Name>FMM.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FMM.Model.Statistics\FMM.Model.Statistics.csproj">
       <Project>{2f037d3b-b92e-4e43-bfbc-c7e36ce8951d}</Project>
       <Name>FMM.Model.Statistics</Name>

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
+using FMM.Common.Paging;
 
-namespace FMM.Service.Statistics.Services
+namespace FMM.Service.Statistics
 {
     class STATInfoService
     {
@@ -23,31 +24,42 @@ namespace FMM.Service.Statistics.Services
         /// </summary>
         /// <param name="STATId"></param>
         /// <returns></returns>
-        STATInfo GetSTATInfoByPrimarykey(long STATId)
+        STATInfo getSTATInfoByPrimarykey(long STATId)
         {
             STATInfo statInfo = new STATInfo();
             return statInfo;
         }
         #endregion
         /// <summary>
-        /// 通过RMANumber获取RMATransaction
+        /// 通过QQ获取获取STATInfo的List
         /// </summary>
         /// <param name="QQ"></param>
         /// <returns></returns>
-        List<STATInfo> GetSTATInfoByRMANumber(long QQ)
+        List<STATInfo> getSTATInfoByRMANumber(long QQ)
         {
             List<STATInfo> statInfoList = new List<STATInfo>();
             return statInfoList;
         }
         /// <summary>
-        /// 根据条件获取RMATransaction的List
+        /// 根据条件获取STATInfo的List
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        List<STATInfo> STATInfoList(STATInfoSearchCriteria criteria)
+        public List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria)
         {
-            List<STATInfo> statInfoList = new List<STATInfo>();
-            return statInfoList;
+            List<STATInfo> STATInfoList = new List<STATInfo>();
+            return STATInfoList;
+        }
+
+        /// <summary>
+        /// 根据条件获取STATInfoPagerList
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria)
+        {
+            Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
+            return STATInfoPagerList;
         }
 
         /// <summary>

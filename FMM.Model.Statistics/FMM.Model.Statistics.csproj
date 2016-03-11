@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\STATInfo.cs" />
+    <Compile Include="Enum\STATInfoEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\STATInfoSearchCriteria.cs" />
   </ItemGroup>
