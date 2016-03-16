@@ -40,7 +40,7 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria);
+        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSize);
 
 
         /// <summary>

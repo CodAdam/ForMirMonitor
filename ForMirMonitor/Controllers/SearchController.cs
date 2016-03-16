@@ -5,6 +5,7 @@ using ForMirMonitor.ViewModels;
 using System.Collections.Generic;
 using FMM.Service.Statistics;
 using Microsoft.Practices.Unity;
+using FMM.Common.Paging;
 
 namespace ForMirMonitor.Controllers
 {
@@ -14,8 +15,18 @@ namespace ForMirMonitor.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            
-            return View();
+            Pager<STATInfo> statInfoList = new Pager<STATInfo>();
+            try
+            {
+                STATInfoSearchCriteria criteria = new STATInfoSearchCriteria();
+
+                statInfoList = STATInfoService.getSTATInfoPagerListByCriteria(criteria, 1, 10);
+            }
+            catch (Exception ex)
+            {
+                //Yintai.ERP.Log.LogService.Instance.Warn("RMA规则页面失败！原因：" + ex.Message + "\r\n" + ex.StackTrace);
+            }
+            return View(new SearchViewListModels(statInfoList, new PageItem { TotalItemCount = (int)statInfoList.TotalRecords, PageSize = 10, CurrentPage = 1 }));
         }
 
         // GET: Search
@@ -38,10 +49,15 @@ namespace ForMirMonitor.Controllers
             return View(si);
         }
 
-        public ActionResult Query(STATInfoSearchCriteria Criteria)
+        public ActionResult Query(STATInfoSearchCriteria Criteria, PageItem pager)
         {
-            SearchViewListModels sil = new SearchViewListModels(Criteria,"STATInfo");
-            return View(sil);
+            Pager<STATInfo> statInfoList = new Pager<STATInfo>();
+
+            statInfoList = STATInfoService.getSTATInfoPagerListByCriteria(Criteria, pager.CurrentPage, pager.PageSize);
+            pager.TotalItemCount = (int)statInfoList.TotalRecords;
+
+            SearchViewListModels model = new SearchViewListModels(statInfoList, pager);
+            return Json(new { PagersRMARuleHtml = model.STATInfoListHtml, PagersTopHtml = model.PagersTopHtml, PagersBottomHtml = model.PagersBottomHtml });
         }
     }
 }

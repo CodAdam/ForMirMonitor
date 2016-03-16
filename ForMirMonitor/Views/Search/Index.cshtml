@@ -1,8 +1,9 @@
-﻿@Model ForMirMonitor.ViewModels
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = null;
     }
+@using ForMirMonitor.ViewModels
+@model SearchViewListModels
 
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -155,39 +156,17 @@
                                     <th>
                                         Status
                                     </th>
-
                                 </tr>
                             </thead>
-                            <tbody>
-                                @{ 
-                                    @*ForMirMonitor.Models.SearchViewModels si = (ForMirMonitor.Models.SearchViewModels)ViewBag.SearchViewModels;
-                                    <tr>
-                                <td>@si.STATId</td>
-                                <td>@si.QQ</td>
-                                <td>@si.GroupNo</td>
-                                <td>@si.UserName</td>
-                                <td>@si.Tag</td>
-                                <td>@si.Tips</td>
-                                <td>@si.Status</td>
-                                </tr>*@
-                                
-                                foreach (ForMirMonitor.ViewModels.SearchViewModels item in Model.STATInfoList)
-                                {
-                                            <tr>
-                                                <td>@item.STATId</td>
-                                                <td>@item.QQ</td>
-                                                <td>@item.GroupNo</td>
-                                                <td>@item.UserName</td>
-                                                <td>@item.Tag</td>
-                                                <td>@item.Tips</td>
-                                                <td>@item.Status</td>
-
-                                            </tr>
-                                        }
-                                    }
+                            <tbody id="STATInfoList">
+                                @Html.Raw(Model.STATInfoListHtml)
                             </tbody>
                         </table>
+                        <div>
+                        @Html.Raw(Model.PagersBottomHtml)
+                        </div>
                         <ul class="pagination pagination-sm">
+                            
                             <li><a href="#">&laquo;</a></li>
                             <li><a href="#">1</a></li>
                             <li><a href="#">2</a></li>
@@ -228,6 +207,10 @@
                 window.location.href = '/Download/Commit_STATModel.xlsx';
             });
 
+            $("#Query").click(function () {
+                QueryPost(1);
+            });
+
             function QueryPost(pageNo) {
                 var queryModel = getQuery(pageNo);
                 if (queryModel == null) { alert("搜索条件异常"); return; }
@@ -235,24 +218,26 @@
 
                 $.ajax({
 
-                    url: "~/query",
+                    
                     type: "post",
-                    url: "/home/DownLoad",
+                    url: "Query",
                     data: queryModel,
                     beforeSend: function () {
-                        $.blockUI({ message: "<h1>正在查询请稍后......<h1>" });
+                        //$.blockUI({ message: "<h1>正在查询请稍后......<h1>" });
                     },
                     complete: function () {
-                        $.unblockUI()
+                        //$.unblockUI()
                     },
                     success: function (data) {
-                        alert("请求已发送");
+                        $("#STATInfoList").html(data.PagersRMARuleHtml);
+                        //$("#topRMAPageInfo").html(data.PagersTopHtml);
+                        //$("#bottomRMAPageInfo").html(data.PagersBottomHtml);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert(textStatus);
                     }
                 });
-                alert(1);
+                
             }
 
             //获取查询条件

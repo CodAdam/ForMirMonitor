@@ -18,11 +18,11 @@ namespace FMM.Service.Statistics
 
 
         /// <summary>
-        /// 构造函数，得到Unit配置文件
+        /// 构造函数，得到Unity配置文件
         /// </summary>
         private STATInfoServiceContainer()
         {
-            configFile = "";
+            configFile = "Config\\Unity\\Unity.Service.STAT.config";
             if (string.IsNullOrEmpty(configFile))
             {
                 throw new Exception("配置出错");

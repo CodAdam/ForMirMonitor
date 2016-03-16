@@ -7,7 +7,7 @@ using FMM.Model.Statistics;
 using FMM.BLL.Statistics.InfoBus;
 namespace FMM.BLL.Statistics.Business
 {
-    class STATInfoBussiness : ISTATInforBussiness
+    class STATInfoBussiness : ISTATInfoBussiness
     {
         #region 判断数据是否存在
         /// <summary>

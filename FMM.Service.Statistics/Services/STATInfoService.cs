@@ -1,11 +1,19 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
+using FMM.BLL.Statistics.InfoBus;
+using System;
 
 namespace FMM.Service.Statistics
 {
-    class STATInfoService
+    public partial class STATInfoService:ISTATInfoService
     {
+
+        /// <summary>
+        /// 总线接口
+        /// </summary>
+        private ISTATInfoBusiness statInfoBusiness = null;
+
         #region 判断数据是否存在
         /// <summary>
         /// 通过主键判断STATInfo是否存在
@@ -56,10 +64,9 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria)
+        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSize)
         {
-            Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
-            return STATInfoPagerList;
+            return statInfoBusiness.GetPagerSearchRMARuleList(criteria, pageIndex, pageSize);
         }
 
         /// <summary>
@@ -88,5 +95,39 @@ namespace FMM.Service.Statistics
 
         }
 
+        bool ISTATInfoService.ExistSTATInfo(long STATId)
+        {
+            throw new NotImplementedException();
+        }
+
+        STATInfo ISTATInfoService.getSTATInfoByPrimarykey(long STATId)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<STATInfo> ISTATInfoService.getSTATInfoByRMANumber(long QQ)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<STATInfo> getSTATInfoListbyCriteria(STATInfoSearchCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISTATInfoService.UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISTATInfoService.AddSTATInfo(STATInfo statinfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ISTATInfoService.ImportSTATInfo(STATInfo statinfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
