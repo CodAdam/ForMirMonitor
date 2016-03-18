@@ -259,6 +259,7 @@
     <Content Include="Config\Unity\Unity.Service.STAT.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Config\Unity\Unity.BLL.STAT.config" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

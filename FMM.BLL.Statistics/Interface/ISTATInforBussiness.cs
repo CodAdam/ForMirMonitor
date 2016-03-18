@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
-using FMM.BLL.Statistics.Providers;
 
 namespace FMM.BLL.Statistics.InfoBus
 {
-    public partial interface ISTATInforBussiness
+    public partial interface ISTATInfoBusiness
     {
         #region 判断数据是否存在
         /// <summary>
@@ -44,7 +40,7 @@ namespace FMM.BLL.Statistics.InfoBus
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria);
+        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria critcriteria, int pageIndex, int pageSizeeria);
 
         /// <summary>
         /// 作废STATInfo

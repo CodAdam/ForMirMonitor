@@ -2,15 +2,16 @@
 using System.Web.Mvc;
 using FMM.Model.Statistics;
 using ForMirMonitor.ViewModels;
-using System.Collections.Generic;
 using FMM.Service.Statistics;
 using Microsoft.Practices.Unity;
 using FMM.Common.Paging;
+
 
 namespace ForMirMonitor.Controllers
 {
     public class SearchController : Controller
     {
+
         ISTATInfoService STATInfoService = STATInfoServiceContainer.Instance.Container.Resolve<ISTATInfoService>();
         // GET: Search
         public ActionResult Index()

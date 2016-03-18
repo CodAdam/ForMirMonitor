@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
 using FMM.BLL.Statistics.InfoBus;
-using System;
+using FMM.BLL.Statistics;
+using Microsoft.Practices.Unity;
+
 
 namespace FMM.Service.Statistics
 {
@@ -12,7 +15,13 @@ namespace FMM.Service.Statistics
         /// <summary>
         /// 总线接口
         /// </summary>
-        private ISTATInfoBusiness statInfoBusiness = null;
+        //private ISTATInfoBusiness statInfoBusiness = null;
+
+        //public STATInfoService()
+        //{
+        //    statInfoBusiness = STATInfoBusinessContainer.Instance.Container.Resolve<ISTATInfoBusiness>();
+        //}
+        ISTATInfoBusiness statInfoBusiness = STATInfoBusinessContainer.Instance.Container.Resolve<ISTATInfoBusiness>();
 
         #region 判断数据是否存在
         /// <summary>
@@ -66,7 +75,9 @@ namespace FMM.Service.Statistics
         /// <returns></returns>
         public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSize)
         {
-            return statInfoBusiness.GetPagerSearchRMARuleList(criteria, pageIndex, pageSize);
+            //Pager<STATInfo> i = new Pager<STATInfo>();
+            //return i;
+            return statInfoBusiness.getSTATInfoPagerListByCriteria(criteria, pageIndex, pageSize);
         }
 
         /// <summary>

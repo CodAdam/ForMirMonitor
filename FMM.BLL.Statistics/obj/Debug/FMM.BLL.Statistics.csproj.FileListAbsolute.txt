@@ -68,3 +68,10 @@ D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Model.Statistics.dll
 D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Model.Statistics.pdb
 D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Common.dll
 D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\FMM.Common.pdb
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.Unity.dll
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.Unity.xml
+D:\YKL_G\ForMirMonitor\FMM.BLL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml

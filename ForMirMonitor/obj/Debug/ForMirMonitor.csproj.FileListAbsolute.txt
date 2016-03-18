@@ -332,3 +332,5 @@ D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.dll
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.ServiceLocation.pdb
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.ServiceLocation.xml
 D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.xml
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.BLL.Statistics.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.BLL.Statistics.pdb

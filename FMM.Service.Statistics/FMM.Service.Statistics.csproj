@@ -95,6 +95,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FMM.BLL.Statistics\FMM.BLL.Statistics.csproj">
+      <Project>{4e2bf1d2-49c0-4e94-97da-8c8a4a6a12f6}</Project>
+      <Name>FMM.BLL.Statistics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FMM.Common\FMM.Common.csproj">
       <Project>{be53a228-28bc-42c2-8487-bd0124acc8d2}</Project>
       <Name>FMM.Common</Name>

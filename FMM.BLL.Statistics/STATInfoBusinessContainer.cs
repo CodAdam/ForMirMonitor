@@ -3,24 +3,24 @@ using System.Configuration;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 
-namespace FMM.Service.Statistics
+namespace FMM.BLL.Statistics
 {
-    public sealed class STATInfoServiceContainer
-    { 
-        private static STATInfoServiceContainer _instance;
+    public class STATInfoBusinessContainer
+    {
+        private static STATInfoBusinessContainer _instance;
         private string configFile = "";
-        private string _ContainerName = "ContainerService";
+        private string _ContainerName = "ContainerBusiness";
         static readonly object lockobj = new object();
-        private static IUnityContainer statInfoServiceUnityContainer;
+        private static IUnityContainer statInfoBusinessUnityContainer;
 
 
         /// <summary>
         /// 构造函数，得到Unity配置文件
         /// </summary>
-        private STATInfoServiceContainer()
+        private STATInfoBusinessContainer()
         {
-            configFile = "Config\\Unity\\Unity.Service.STAT.config";
-            
+            configFile = "Config\\Unity\\Unity.BLL.STAT.config";
+
             if (string.IsNullOrEmpty(configFile))
             {
                 throw new Exception("配置出错");
@@ -34,11 +34,15 @@ namespace FMM.Service.Statistics
         /// <summary>
         ///  单例
         /// </summary>
-        public static STATInfoServiceContainer Instance {
-            get {
-                lock (lockobj) {
-                    if (_instance == null){
-                        _instance = new STATInfoServiceContainer();
+        public static STATInfoBusinessContainer Instance
+        {
+            get
+            {
+                lock (lockobj)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new STATInfoBusinessContainer();
                     }
                     return _instance;
                 }
@@ -52,9 +56,9 @@ namespace FMM.Service.Statistics
         {
             get
             {
-                if (statInfoServiceUnityContainer == null)
+                if (statInfoBusinessUnityContainer == null)
                 {
-                    statInfoServiceUnityContainer = new UnityContainer();
+                    statInfoBusinessUnityContainer = new UnityContainer();
                     ExeConfigurationFileMap basicFileMap = new ExeConfigurationFileMap
                     {
                         ExeConfigFilename = configFile
@@ -62,11 +66,12 @@ namespace FMM.Service.Statistics
                     UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager
                         .OpenMappedExeConfiguration(basicFileMap, ConfigurationUserLevel.None)
                         .GetSection("unity");
-                    section.Configure(statInfoServiceUnityContainer, _ContainerName);
+                    section.Configure(statInfoBusinessUnityContainer, _ContainerName);
                 }
-                return statInfoServiceUnityContainer;
+                return statInfoBusinessUnityContainer;
             }
         }
 
     }
 }
+

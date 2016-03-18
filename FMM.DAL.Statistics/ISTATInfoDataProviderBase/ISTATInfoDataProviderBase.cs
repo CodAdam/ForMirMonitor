@@ -3,7 +3,7 @@ using FMM.Model.Statistics;
 
 namespace FMM.DAL.Statistics
 {
-    class STATInfoDataProvider
+    interface ISTATInfoDataProviderBase
     {
         #region 判断数据是否存在
         /// <summary>
@@ -11,10 +11,7 @@ namespace FMM.DAL.Statistics
         /// </summary>
         /// <param name="STATId">主键</param>
         /// <returns></returns>
-        bool ExistSTATInfo(long STATId)
-        {
-            return true;
-        }
+        bool ExistSTATInfo(long STATId);
 
         #endregion
         #region 获取实例
@@ -23,57 +20,39 @@ namespace FMM.DAL.Statistics
         /// </summary>
         /// <param name="STATId"></param>
         /// <returns></returns>
-        STATInfo GetSTATInfoByPrimarykey(long STATId)
-        {
-            STATInfo statInfo = new STATInfo();
-            return statInfo;
-        }
+        STATInfo GetSTATInfoByPrimarykey(long STATId);
         #endregion
         /// <summary>
         /// 通过RMANumber获取RMATransaction
         /// </summary>
         /// <param name="QQ"></param>
         /// <returns></returns>
-        List<STATInfo> GetSTATInfoByRMANumber(long QQ)
-        {
-            List<STATInfo> statInfoList = new List<STATInfo>();
-            return statInfoList;
-        }
+        List<STATInfo> GetSTATInfoByRMANumber(long QQ);
+
         /// <summary>
         /// 根据条件获取RMATransaction的List
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        List<STATInfo> STATInfoList(STATInfoSearchCriteria criteria)
-        {
-            List<STATInfo> statInfoList = new List<STATInfo>();
-            return statInfoList;
-        }
+        List<STATInfo> STATInfoList(STATInfoSearchCriteria criteria);
 
         /// <summary>
         /// 作废STATInfo
         /// </summary>
-        void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
-        {
+        void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator);
 
-        }
 
         /// <summary>
         /// 新建统计信息
         /// </summary>
         /// <param name="statinfo">统计信息实体</param>
-        void AddSTATInfo(STATInfo statinfo)
-        {
-
-        }
+        void AddSTATInfo(STATInfo statinfo);
 
         /// <summary>
         /// Excel导入统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        void ImportSTATInfo(STATInfo statinfo)
-        {
-
-        }
+        void ImportSTATInfo(STATInfo statinfo);
+ 
     }
 }

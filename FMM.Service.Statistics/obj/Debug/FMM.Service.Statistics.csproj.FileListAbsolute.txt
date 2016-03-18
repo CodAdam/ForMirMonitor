@@ -75,3 +75,5 @@ D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.Serv
 D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.Unity.xml
 D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.BLL.Statistics.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.BLL.Statistics.pdb
