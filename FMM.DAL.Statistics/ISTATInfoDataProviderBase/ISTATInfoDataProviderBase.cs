@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
+using FMM.Common.Paging;
 
 namespace FMM.DAL.Statistics
 {
-    interface ISTATInfoDataProviderBase
+    public interface ISTATInfoDataProviderBase
     {
         #region 判断数据是否存在
         /// <summary>
@@ -35,6 +36,15 @@ namespace FMM.DAL.Statistics
         /// <param name="criteria"></param>
         /// <returns></returns>
         List<STATInfo> STATInfoList(STATInfoSearchCriteria criteria);
+
+        /// <summary>
+        /// 根据条件获取STATInfoPagerList
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSizecriteria"></param>
+        /// <returns></returns>
+        Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSizecriteria);
 
         /// <summary>
         /// 作废STATInfo

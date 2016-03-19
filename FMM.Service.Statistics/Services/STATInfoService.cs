@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
-using FMM.BLL.Statistics.InfoBus;
+//using FMM.BLL.Statistics.InfoBus;
 using FMM.BLL.Statistics;
 using Microsoft.Practices.Unity;
 
@@ -11,18 +11,15 @@ namespace FMM.Service.Statistics
 {
     public partial class STATInfoService:ISTATInfoService
     {
-
         /// <summary>
-        /// 总线接口
+        /// BLL接口
         /// </summary>
-        //private ISTATInfoBusiness statInfoBusiness = null;
-
-        //public STATInfoService()
-        //{
-        //    statInfoBusiness = STATInfoBusinessContainer.Instance.Container.Resolve<ISTATInfoBusiness>();
-        //}
-        ISTATInfoBusiness statInfoBusiness = STATInfoBusinessContainer.Instance.Container.Resolve<ISTATInfoBusiness>();
-
+        private ISTATInfoBusiness statInfoBusiness = null;
+        public STATInfoService()
+        {
+            statInfoBusiness = STATInfoBusinessContainer.Instance.Container.Resolve<ISTATInfoBusiness>();
+        }
+        
         #region 判断数据是否存在
         /// <summary>
         /// 通过主键判断STATInfo是否存在

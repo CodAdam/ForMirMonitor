@@ -1,11 +1,22 @@
 ﻿using System.Collections.Generic;
 using FMM.Common.Paging;
 using FMM.Model.Statistics;
-using FMM.BLL.Statistics.InfoBus;
-namespace FMM.BLL.Statistics.Business
+using FMM.DAL.Statistics;
+using Microsoft.Practices.Unity;
+
+namespace FMM.BLL.Statistics
 {
-    class STATInfoBussiness : ISTATInfoBusiness
+    public class STATInfoBusiness : ISTATInfoBusiness
     {
+        /// <summary>
+        /// DAL接口
+        /// </summary>
+        private ISTATInfoDataProviderBase statInfoDataAccess = null;
+        public STATInfoBusiness()
+        {
+            statInfoDataAccess = STATInfoDataAccessContainer.Instance.Container.Resolve<ISTATInfoDataProviderBase>();
+        }
+
         #region 判断数据是否存在
         /// <summary>
         /// 通过主键判断STATInfo是否存在
@@ -57,9 +68,8 @@ namespace FMM.BLL.Statistics.Business
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSizecriteria) {
-            Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
-            return STATInfoPagerList;
+        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSize) {
+            return(statInfoDataAccess.getSTATInfoPagerListByCriteria(criteria, pageIndex, pageSize));
         }
 
         /// <summary>

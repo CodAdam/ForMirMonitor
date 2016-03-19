@@ -66,3 +66,14 @@ D:\ForMirMonitor\FMM.DAL.Statistics\obj\Debug\FMM.DAL.Statistics.dll
 D:\ForMirMonitor\FMM.DAL.Statistics\obj\Debug\FMM.DAL.Statistics.pdb
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.dll
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.pdb
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Model.Statistics.pdb
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.xml
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Common.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\FMM.Common.pdb

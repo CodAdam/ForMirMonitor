@@ -85,8 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\STATInfoBussiness.cs" />
-    <Compile Include="Interface\ISTATInforBussiness.cs" />
+    <Compile Include="Business\STATInfoBusiness.cs" />
+    <Compile Include="Interface\ISTATInforBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="STATInfoBusinessContainer.cs" />
   </ItemGroup>
@@ -99,6 +99,10 @@
     <ProjectReference Include="..\FMM.Common\FMM.Common.csproj">
       <Project>{be53a228-28bc-42c2-8487-bd0124acc8d2}</Project>
       <Name>FMM.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMM.DAL.Statistics\FMM.DAL.Statistics.csproj">
+      <Project>{b4deee59-480c-4a29-a109-c62624b8491f}</Project>
+      <Name>FMM.DAL.Statistics</Name>
     </ProjectReference>
     <ProjectReference Include="..\FMM.Model.Statistics\FMM.Model.Statistics.csproj">
       <Project>{2f037d3b-b92e-4e43-bfbc-c7e36ce8951d}</Project>

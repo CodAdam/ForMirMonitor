@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
+using FMM.Common.Paging;
 
 namespace FMM.DAL.Statistics
 {
-    class STATInfoDataProvider:ISTATInfoDataProviderBase
+    public  class STATInfoDataProvider:ISTATInfoDataProviderBase
     {
+
+
         #region 判断数据是否存在
         /// <summary>
         /// 通过主键判断STATInfo是否存在
@@ -48,6 +51,21 @@ namespace FMM.DAL.Statistics
         {
             List<STATInfo> statInfoList = new List<STATInfo>();
             return statInfoList;
+        }
+
+
+        /// <summary>
+        /// 根据条件获取STATInfoPagerList
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSizecriteria"></param>
+        /// <returns></returns>
+        public Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSize)
+        {
+            Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
+            return STATInfoPagerList;
+            
         }
 
         /// <summary>

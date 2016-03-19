@@ -2,7 +2,7 @@
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
 
-namespace FMM.BLL.Statistics.InfoBus
+namespace FMM.BLL.Statistics
 {
     public partial interface ISTATInfoBusiness
     {

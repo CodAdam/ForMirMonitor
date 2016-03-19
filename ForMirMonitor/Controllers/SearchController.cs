@@ -12,7 +12,9 @@ namespace ForMirMonitor.Controllers
     public class SearchController : Controller
     {
 
+
         ISTATInfoService STATInfoService = STATInfoServiceContainer.Instance.Container.Resolve<ISTATInfoService>();
+        
         // GET: Search
         public ActionResult Index()
         {
