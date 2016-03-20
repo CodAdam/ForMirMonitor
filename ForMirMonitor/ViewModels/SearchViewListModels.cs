@@ -5,6 +5,8 @@ using FMM.Common.Paging;
 using FMM.Model.Statistics;
 using FMM.Common.Extensions;
 using Microsoft.Practices.Unity;
+using log4net;
+using System.Reflection;
 
 namespace ForMirMonitor.ViewModels
 {
@@ -90,7 +92,8 @@ namespace ForMirMonitor.ViewModels
             }
             catch (Exception ex)
             {
-                //FMM.Common.Log.LogService.Instance.Warn("查询数据错误！原因：" + ex.Message + "\r\n" + ex.StackTrace);
+                ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+                log.Warn("查询数据错误！原因：" + ex.Message + "\r\n" + ex.StackTrace);
                 throw ex;
             }
 
