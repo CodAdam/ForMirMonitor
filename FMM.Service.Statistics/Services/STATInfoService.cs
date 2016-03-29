@@ -91,7 +91,7 @@ namespace FMM.Service.Statistics
         /// <param name="statinfo">统计信息实体</param>
         void AddSTATInfo(STATInfo statinfo)
         {
-
+            statInfoBusiness.AddSTATInfo(statinfo);
         }
 
         /// <summary>

@@ -266,6 +266,9 @@
     <Content Include="Config\Unity\Unity.BLL.STAT.config" />
     <Content Include="Config\Unity\Unity.DAL.STAT.config" />
     <Content Include="Config\log\log4net.config" />
+    <None Include="Properties\PublishProfiles\AdamFMM.pubxml" />
+    <None Include="Properties\PublishProfiles\Web.config.pubxml" />
+    <None Include="Properties\PublishProfiles\xiaogangconfig.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

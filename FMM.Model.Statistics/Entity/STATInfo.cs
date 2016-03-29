@@ -16,7 +16,7 @@ namespace FMM.Model.Statistics
        /// QQ
        /// </summary>
         [DataMember]
-        public int? QQ { get; set; }
+        public long QQ { get; set; }
 
         /// <summary>
         /// 分组编号

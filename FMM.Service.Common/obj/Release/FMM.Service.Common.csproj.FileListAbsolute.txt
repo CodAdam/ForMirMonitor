@@ -1,0 +1,7 @@
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Release\FMM.Service.Common.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Release\FMM.Service.Common.pdb
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Release\log4net.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Release\log4net.xml
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\obj\Release\FMM.Service.Common.csprojResolveAssemblyReference.cache
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\obj\Release\FMM.Service.Common.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\obj\Release\FMM.Service.Common.pdb

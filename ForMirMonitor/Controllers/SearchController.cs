@@ -52,6 +52,13 @@ namespace ForMirMonitor.Controllers
             return View(si);
         }
 
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="Criteria"></param>
+        /// <param name="pager"></param>
+        /// <returns></returns>
+        [HttpPost]
         public ActionResult Query(STATInfoSearchCriteria Criteria, PageItem pager)
         {
             Pager<STATInfo> statInfoList = new Pager<STATInfo>();

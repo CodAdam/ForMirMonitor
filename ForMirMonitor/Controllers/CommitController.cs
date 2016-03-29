@@ -1,85 +1,43 @@
 ﻿using System.Web.Mvc;
+using FMM.Model.Statistics;
+using FMM.Service.Statistics;
+using Microsoft.Practices.Unity;
+using System;
 
 namespace ForMirMonitor.Controllers
 {
+
     public class CommitController : Controller
     {
+        ISTATInfoService STATInfoService = STATInfoServiceContainer.Instance.Container.Resolve<ISTATInfoService>();
+
+
         // GET: Commit
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Commit/Details/5
-        public ActionResult Details(int id)
+        // post: 
+        public ActionResult CommitSTATInfo()
         {
-            return View();
-        }
-
-        // GET: Commit/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Commit/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
+            STATInfo statInfo = new STATInfo();
+            ////statInfo.QQ=long.Parse(Request["QQ"]) ;            
+            ////statInfo.GroupNo = int.Parse(Request["group"]);
+            ////statInfo.UserName =Request["group"];
+            ////statInfo.Tag = int.Parse(Request["group"]);
+            ////statInfo.Tips = Request["tips"];
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                STATInfoService.AddSTATInfo(statInfo);
             }
-            catch
-            {
-                return View();
+            catch(Exception ex) {
+                return Content(ex.Message);
+                
             }
-        }
-
-        // GET: Commit/Edit/5
-        public ActionResult Edit(int id)
-        {
             return View();
+
         }
 
-        // POST: Commit/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Commit/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Commit/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

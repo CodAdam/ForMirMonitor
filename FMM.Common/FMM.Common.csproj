@@ -35,6 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Extensions\EnumHelper.cs" />
     <Compile Include="Extensions\HtmlHelperExtension.cs" />
+    <Compile Include="Helper\Sqlhelper.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Paging\Page.cs" />
     <Compile Include="Paging\Pager.cs" />

@@ -1,35 +1,35 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    Layout = null; 
+    Layout = null;
 }
 
 @*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
 
 
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -40,6 +40,8 @@
 <script src="~/Scripts/bootstrap.js"></script>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101298051" data-redirecturi="http://olivefamily.cn" data-callback="true" charset="utf-8"></script>
 
 
 <div class="container-fluid">
@@ -55,10 +57,18 @@
                 <li>
                     <a href="../Search/index">信息查询</a>
                 </li>
+                <li>
+                    <div class="pull-right">
+                        <span id="qqLoginBtn"></span>
+                    </div>
+                </li>
             </ul>
-            
+
         </div>
+        
+
     </div>
+    
 
     <div class="carousel slide" id="carousel-853493" style="width:900px">
         <ol class="carousel-indicators">
@@ -77,7 +87,7 @@
                         Welcome
                     </h4>
                     <p>
-                        欢迎使用ForMirMoniter信息采集系统。
+                        欢迎参与ForMirMoniter信息采集。
                     </p>
                 </div>
             </div>
@@ -99,7 +109,7 @@
                         About
                     </h4>
                     <p>
-                        我们有你更美好！Cowork Together！信息统计小工具源码地址 https://github.com/CodAdam/ForMirMonitor.git 
+                        我们有你更美好！Cowork Together！信息统计小工具源码地址 https://github.com/CodAdam/ForMirMonitor.git
                     </p>
                 </div>
             </div>
@@ -107,3 +117,35 @@
     </div>
 </div>
 
+<script type="text/javascript">
+
+    //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
+    QC.Login({
+        //btnId：插入按钮的节点id，必选
+        btnId: "qqLoginBtn",
+        //用户需要确认的scope授权项，可选，默认all
+        scope: "all",
+        //按钮尺寸，可用值[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]，可选，默认B_S
+        size: "A_L"
+    }, function (reqData, opts) {//登录成功
+        //根据返回数据，更换按钮显示状态方法
+        var dom = document.getElementById(opts['btnId']),
+        _logoutTemplate = [
+             //头像
+             '<span><img src="{figureurl}" class="{size_key}"/></span>',
+             //昵称
+             '<span>|{nickname}</span>',
+             //退出
+             '<span><a href="javascript:QC.Login.signOut();">|退出</a></span>'
+        ].join("");
+        dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+            nickname: QC.String.escHTML(reqData.nickname), //做xss过滤
+            figureurl: reqData.figureurl
+        }));
+    }, function (opts) {//注销成功
+        alert('QQ登录 注销成功');
+    }
+    );
+
+
+</script>

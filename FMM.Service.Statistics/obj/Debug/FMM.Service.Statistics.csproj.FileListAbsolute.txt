@@ -92,3 +92,7 @@ E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.Unity.xml
 E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.DAL.Statistics.dll
 E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.DAL.Statistics.pdb
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\log4net.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.DAL.Statistics.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\log4net.xml
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.DAL.Statistics.pdb

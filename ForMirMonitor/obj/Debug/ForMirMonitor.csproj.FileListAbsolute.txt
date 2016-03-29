@@ -351,3 +351,7 @@ E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.Configuration.xml
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.BLL.Statistics.pdb
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.DAL.Statistics.dll
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.DAL.Statistics.pdb
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\log4net.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.DAL.Statistics.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\log4net.xml
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\FMM.DAL.Statistics.pdb

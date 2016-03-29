@@ -64,3 +64,5 @@ D:\ForMirMonitor\FMM.Model.Statistics\obj\Debug\FMM.Model.Statistics.csprojResol
 D:\ForMirMonitor\FMM.Model.Statistics\obj\Debug\FMM.Model.Statistics.dll
 D:\ForMirMonitor\FMM.Model.Statistics\obj\Debug\FMM.Model.Statistics.pdb
 D:\YKL_G\ForMirMonitor\FMM.Model.Statistics\obj\Debug\FMM.Model.Statistics.csprojResolveAssemblyReference.cache
+D:\YKL_G\ForMirMonitor\FMM.Model.Statistics\bin\Debug\log4net.dll
+D:\YKL_G\ForMirMonitor\FMM.Model.Statistics\bin\Debug\log4net.xml

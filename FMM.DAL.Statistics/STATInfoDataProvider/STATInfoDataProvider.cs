@@ -1,13 +1,104 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
+using System.Data.Common;
+using System.Data;
+using FMM.Common.Helper;
 
 namespace FMM.DAL.Statistics
 {
-    public  class STATInfoDataProvider:ISTATInfoDataProviderBase
+    public class STATInfoDataProvider : ISTATInfoDataProviderBase
     {
+        #region SQL
 
+        #region strSTATInfoSQL
 
+        readonly string strSTATInfoSelectSQL = @"SELECT  
+               [STATId]
+              ,[QQ]
+              ,[GroupNo]
+              ,[UserName]
+              ,[Tag]
+              ,[Tips]
+              ,[Indate]
+              ,[EditDate]
+              ,[Oprator]
+              ,[Status]
+          FROM [STATDB].[dbo].[STATInfo] with(nolock) ";
+
+        #endregion
+
+        #region STATList
+
+        readonly string strSTATInfoSearchListSQL = @"  ROW_NUMBER() OVER(ORDER BY statinfo.[EditDate] desc) AS ROWID
+                                  ,statinfo.[STATId]
+                                  ,statinfo.[QQ]
+                                  ,statinfo.[GroupNo]
+                                  ,statinfo.[UserName]
+                                  ,statinfo.[Tag]
+                                  ,statinfo.[Tips]
+                                  ,statinfo.[Indate]
+                                  ,statinfo.[EditDate]
+                                  ,statinfo.[Oprator]
+                                  ,statinfo.[Status]";
+        //,category.[Description] AS CategoryName 
+        //,isnull(properties.Description,'') + ' ' + isnull(propertyvalue.Description,'') AS PropertyName ";
+
+        readonly string strSTATInfoSearchListForm = @" [STATDB].[dbo].[STATInfo] with(nolock)
+
+            //LEFT JOIN YinTaiContent.dbo.BrandInfo brand WITH(NOLOCK) ON brand.BrandID=rmarule.BrandID
+            //LEFT JOIN YinTaiContent.dbo.ItemCategory category WITH(NOLOCK) ON category.CategoryID=rmarule.CategoryID 
+            //LEFT JOIN YinTaiContent.dbo.ItemProfilePropertyValues propertyvalue WITH(NOLOCK) ON propertyvalue.ValueID=rmarule.PropertyID
+            //LEFT JOIN YinTaiContent.dbo.ItemProfileProperties properties WITH(NOLOCK) ON properties.PropertyID=propertyvalue.PropertyID 
+            //LEFT JOIN ERPSCM.dbo.Provider Providers WITH(NOLOCK) ON Providers.Providerid=rmarule.ProviderCode";
+
+        #endregion
+
+        #region InsertSTATInfo
+
+        string InsertSTATInfo = @"INSERT INTO [YinTaiService].[dbo].[RMARule]
+                                                    ([STATId]
+                                                    ,[QQ]
+                                                    ,[GroupNo]
+                                                    ,[UserName]
+                                                    ,[Tag]
+                                                    ,[Tips]
+                                                    ,[Indate]
+                                                    ,[EditDate]
+                                                    ,[Oprator]
+                                                    ,[Status])
+                                             VALUES
+                                                    (@STATId
+                                                    ,@QQ
+                                                    ,@GroupNo
+                                                    ,@UserName
+                                                    ,@Tag
+                                                    ,@Tips
+                                                    ,@Indate
+                                                    ,@EditDate
+                                                    ,@Oprator
+                                                    ,@Status)
+                                        ";
+
+        #endregion
+
+        #region STATInfo
+
+        readonly string strUpdateRMARule = @"UPDATE [YinTaiService].[dbo].[RMARule] SET 
+                                                     [STATId]=@STATId
+                                                    ,[QQ]=@QQ
+                                                    ,[GroupNo]=@GroupNo
+                                                    ,[UserName]=@UserName
+                                                    ,[Tag]=@Tag
+                                                    ,[Tips]=@Tips
+                                                    ,[Indate]=@Indate
+                                                    ,[EditDate]=@EditDate
+                                                    ,[Oprator]=@Oprator
+                                                    ,[Status]=@Status
+                                             WHERE [STATId]=@STATId";
+
+        #endregion
+        #endregion 
         #region 判断数据是否存在
         /// <summary>
         /// 通过主键判断STATInfo是否存在
@@ -65,7 +156,7 @@ namespace FMM.DAL.Statistics
         {
             Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
             return STATInfoPagerList;
-            
+
         }
 
         /// <summary>
@@ -82,7 +173,26 @@ namespace FMM.DAL.Statistics
         /// <param name="statinfo">统计信息实体</param>
         public void AddSTATInfo(STATInfo statinfo)
         {
-
+            string sql=AddInparaByInsert(statinfo);
+            int result=SQLHelper.Update(sql);
+        }
+        /// <summary>
+        /// 新增用到的参数
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="Entity"></param>
+        string AddInparaByInsert(STATInfo Entity)
+        {
+            // InsertSTATInfo.Replace("@QQ", "\'" + Entity.QQ.ToString() + "'\'");
+            InsertSTATInfo.Replace("@QQ","\'"+Entity.QQ.ToString()+"'\'");
+            InsertSTATInfo.Replace("@UserName", "\'"+Entity.QQ.ToString()+ "\'");
+            InsertSTATInfo.Replace("@Tag", "\'"+Entity.QQ.ToString()+ "\'");
+            InsertSTATInfo.Replace("@Tips", "\'"+Entity.QQ.ToString()+ "\'");
+            InsertSTATInfo.Replace("@Indate", "\'"+DataSetDateTime.Local.ToString()+ "\'");
+            InsertSTATInfo.Replace("@EditDate", "\'"+ DataSetDateTime.Local.ToString()+ "\'");
+            InsertSTATInfo.Replace("@Oprator", "\'0\'");
+            InsertSTATInfo.Replace("@Status", "\'1\'");
+            return InsertSTATInfo;
         }
 
         /// <summary>

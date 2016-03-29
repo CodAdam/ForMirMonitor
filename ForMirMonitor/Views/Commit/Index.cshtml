@@ -14,6 +14,13 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css" />
+
+<script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js"></script>
 
 
 
@@ -46,16 +53,16 @@
         </div>
         <div class="panel-body">
             <div style="padding: 50px 50px 10px;">
-                <form class="bs-example bs-example-form" role="form" action="~/Home/InfoCommit">
+                <form class="commitfrom" role="form" action="~/Commit/CommitSTATInfo">
                     <div class="input-group input-group-sm ">
-                        <span class="input-group-addon">&nbsp;&nbsp;&nbsp;QQ&nbsp;&nbsp;</span>
-                        <input type="text" class="form-control" placeholder="191047321" />
+                        <span class="input-group-addon" >&nbsp;&nbsp;&nbsp;QQ&nbsp;&nbsp;</span>
+                        <input type="text" name="QQ" class="form-control" placeholder="191047321" />
                         <span style="color:Highlight;display:none"> * 请确认QQ输入正确</span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">Group</span>
-                        <select class="form-control">
+                        <select class="form-control" name="group">
                             <option value="">- 请选择 -</option>
                             <option value="">- 15期vip -</option>
                             <option value="">- 第5期高级班 -</option>
@@ -65,13 +72,13 @@
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <input type="text" class="form-control" placeholder="22-Adam-男-北京">
+                        <input type="text" name="ID" class="form-control" placeholder="22-Adam-男-北京">
                         <span style="color:Highlight;display:none"> * 群昵称</span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">&nbsp;&nbsp;Tag&nbsp;&nbsp;</span>
-                        <select class="form-control">
+                        <select class="form-control" name="Tag">
                             <option value="">- 请选择 -</option>
                             <option value="">- 前50号学员参加第五期 -</option>
                             <option value="">- 广州区线下聚会活动 -</option>
@@ -94,3 +101,43 @@
             </div>
         </div>
     </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('.commitform').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            QQ: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The QQ number is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 12,
+                        message: 'The username must be more than 5 and less than 12 characters long'
+                    },
+                    regexp: {
+                        regexp: /[1-9][0-9]{4,}/,
+                        message: 'Please write your QQ here'
+                    }
+                }
+            },
+            ID: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email is required and cannot be empty'
+                    },
+                }
+            }
+        }
+    });
+});
+</script>
