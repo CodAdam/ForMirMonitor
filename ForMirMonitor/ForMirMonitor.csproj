@@ -234,12 +234,28 @@
     <Compile Include="ViewModels\SearchViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker-master\.gitattributes" />
+    <Content Include="Content\bootstrap-datetimepicker-master\.gitignore" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap-table\bootstrap-table-locale-all.js" />
+    <Content Include="Content\bootstrap-table\bootstrap-table-locale-all.min.js" />
+    <Content Include="Content\bootstrap-table\bootstrap-table.css" />
+    <Content Include="Content\bootstrap-table\bootstrap-table.js" />
+    <Content Include="Content\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="Content\bootstrap-table\bootstrap-table.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.js" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="Content\font\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -266,6 +282,19 @@
     <Content Include="Config\Unity\Unity.BLL.STAT.config" />
     <Content Include="Config\Unity\Unity.DAL.STAT.config" />
     <Content Include="Config\log\log4net.config" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-datetimepicker-master\.npmignore" />
+    <Content Include="Content\bootstrap-datetimepicker-master\.travis.yml" />
+    <Content Include="Content\bootstrap-datetimepicker-master\bower.json" />
+    <Content Include="Content\bootstrap-datetimepicker-master\LICENSE" />
+    <Content Include="Content\bootstrap-datetimepicker-master\minify.sh" />
+    <Content Include="Content\bootstrap-datetimepicker-master\package.json" />
+    <Content Include="Content\bootstrap-datetimepicker-master\README.md" />
+    <Content Include="Content\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\font\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\AdamFMM.pubxml" />
     <None Include="Properties\PublishProfiles\Web.config.pubxml" />
     <None Include="Properties\PublishProfiles\xiaogangconfig.pubxml" />
@@ -278,6 +307,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Search\index.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -319,6 +349,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\build\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\css\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\js\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\less\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\sample in bootstrap v2\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\sample in bootstrap v3\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\screenshot\" />
+    <Folder Include="Content\bootstrap-datetimepicker-master\tests\" />
+    <Folder Include="Content\bootstrap-table\extensions\" />
+    <Folder Include="Content\bootstrap-table\locale\" />
+    <Folder Include="Content\bootstrap3-editable\css\" />
+    <Folder Include="Content\bootstrap3-editable\img\" />
+    <Folder Include="Content\bootstrap3-editable\js\" />
     <Folder Include="Views\Common\" />
     <Folder Include="Views\test\" />
   </ItemGroup>
