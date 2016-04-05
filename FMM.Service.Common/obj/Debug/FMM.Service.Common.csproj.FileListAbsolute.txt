@@ -15,3 +15,5 @@ D:\YKL_G\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.dll
 D:\YKL_G\ForMirMonitor\FMM.Service.Common\obj\Debug\FMM.Service.Common.pdb
 D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.dll
 D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.xml
+E:\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.dll
+E:\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.xml

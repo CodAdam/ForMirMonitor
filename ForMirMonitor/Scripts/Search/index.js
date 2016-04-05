@@ -16,8 +16,8 @@ var TableInit = function () {
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
-        $('#tb_departments').bootstrapTable({
-            url: '/Home/GetDepartment',         //请求后台的URL（*）
+        $('#tb_statinfo').bootstrapTable({
+            url: '/Search/GetStatInfoTable',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -44,28 +44,38 @@ var TableInit = function () {
             columns: [{
                 checkbox: true
             }, {
-                field: 'Name',
-                title: '部门名称'
+                field: 'STATId',
+                title: 'STATId'
             }, {
-                field: 'ParentName',
-                title: '上级部门'
+                field: 'QQ',
+                title: 'QQ'
             }, {
-                field: 'Level',
-                title: '部门级别'
+                field: 'GroupNo',
+                title: 'GroupNo'
             }, {
-                field: 'Desc',
-                title: '描述'
+                field: 'Id',
+                title: 'Id'
+            }, {
+                field: 'Tag',
+                title: 'Tag'
+            }, {
+                field: 'Tips',
+                title: 'Tips'
+            }, {
+                field: 'Status',
+                title: 'Status'
             }, ]
         });
     };
+
+
 
     //得到查询的参数
     oTableInit.queryParams = function (params) {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
-            offset: params.offset,  //页码
-            departmentname: $("#txt_search_departmentname").val(),
-            statu: $("#txt_search_statu").val()
+            offset: params.offset, //页码
+            criteria: getQuery(1), //查询条件        
         };
         return temp;
     };

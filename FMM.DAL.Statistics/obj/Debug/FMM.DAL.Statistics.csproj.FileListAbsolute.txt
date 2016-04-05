@@ -88,3 +88,5 @@ D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.ServiceL
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.xml
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\log4net.dll
+E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\log4net.xml

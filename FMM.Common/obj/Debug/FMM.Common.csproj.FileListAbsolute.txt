@@ -5,3 +5,10 @@ D:\YKL_G\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.dll
 D:\YKL_G\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.pdb
 D:\YKL_G\ForMirMonitor\FMM.Common\bin\Debug\log4net.dll
 D:\YKL_G\ForMirMonitor\FMM.Common\bin\Debug\log4net.xml
+E:\ForMirMonitor\FMM.Common\bin\Debug\FMM.Common.dll
+E:\ForMirMonitor\FMM.Common\bin\Debug\FMM.Common.pdb
+E:\ForMirMonitor\FMM.Common\bin\Debug\log4net.dll
+E:\ForMirMonitor\FMM.Common\bin\Debug\log4net.xml
+E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.csprojResolveAssemblyReference.cache
+E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.dll
+E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.pdb

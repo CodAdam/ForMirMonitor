@@ -5,7 +5,8 @@ using ForMirMonitor.ViewModels;
 using FMM.Service.Statistics;
 using Microsoft.Practices.Unity;
 using FMM.Common.Paging;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ForMirMonitor.Controllers
 {
@@ -68,6 +69,15 @@ namespace ForMirMonitor.Controllers
 
             SearchViewListModels model = new SearchViewListModels(statInfoList, pager);
             return Json(new { PagersRMARuleHtml = model.STATInfoListHtml, PagersTopHtml = model.PagersTopHtml, PagersBottomHtml = model.PagersBottomHtml });
+        }
+
+        public JsonResult GetStatInfoTable(int limit, int offset, STATInfoSearchCriteria criteria)
+        {
+            List<STATInfo> statInfoList = new List<STATInfo>();
+            statInfoList = STATInfoService.getSTATInfoListbyCriteria(criteria);
+            var total = statInfoList.Count;
+            var rows = statInfoList.Skip(offset).Take(limit).ToList();
+            return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -64,7 +64,6 @@ namespace FMM.Model.Statistics
         /// 状态
         /// </summary>
         [DataMember]
-        public int status { get; set; }
-        public object Status { get; set; }
+        public int Status { get; set; }
     }
 }
