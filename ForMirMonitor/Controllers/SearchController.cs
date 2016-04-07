@@ -71,6 +71,7 @@ namespace ForMirMonitor.Controllers
             return Json(new { PagersRMARuleHtml = model.STATInfoListHtml, PagersTopHtml = model.PagersTopHtml, PagersBottomHtml = model.PagersBottomHtml });
         }
 
+        [HttpGet]
         public JsonResult GetStatInfoTable(int limit, int offset, STATInfoSearchCriteria criteria)
         {
             List<STATInfo> statInfoList = new List<STATInfo>();

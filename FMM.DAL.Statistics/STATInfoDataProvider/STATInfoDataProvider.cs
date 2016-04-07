@@ -4,6 +4,9 @@ using FMM.Common.Paging;
 using System.Data.Common;
 using System.Data;
 using FMM.Common.Helper;
+using System.Data.SqlClient;
+using System;
+using System.Text;
 
 namespace FMM.DAL.Statistics
 {
@@ -24,7 +27,7 @@ namespace FMM.DAL.Statistics
               ,[EditDate]
               ,[Oprator]
               ,[Status]
-          FROM [STATDB].[dbo].[STATInfo] with(nolock) ";
+          FROM [STATDB].[dbo].[STATInfo]  with(nolock) ";
 
         #endregion
 
@@ -157,6 +160,56 @@ namespace FMM.DAL.Statistics
             Pager<STATInfo> STATInfoPagerList = new Pager<STATInfo>();
             return STATInfoPagerList;
 
+        }
+
+        /// <summary>
+        /// 根据条件获取STATInfoList
+        /// </summary>
+        /// <param name="pageSizecriteria"></param>
+        /// <returns></returns>
+        public List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria) {
+            StringBuilder sql = new StringBuilder("");
+            sql.Append(strSTATInfoSelectSQL);
+            sql.Append(strCriteriaSqlWhere(criteria));
+  
+            SqlDataReader objReader = SQLHelper.GetReader(sql.ToString());
+
+            List<STATInfo> STATInfoList = new List<STATInfo>();
+          
+            while (objReader.Read())
+            {
+                STATInfoList.Add(new STATInfo()
+                {
+                STATId = Convert.ToInt32(objReader["STATId"]),
+                QQ = Convert.ToInt32(objReader["QQ"]),                
+                GroupNo= Convert.ToInt32(objReader["GroupNo"]),
+                UserName= Convert.ToString(objReader["UserName"]),
+                Tag= Convert.ToInt32(objReader["Tag"]),
+                Tips= Convert.ToString(objReader["Tips"]),
+                Status= Convert.ToInt32(objReader["Status"])
+                });
+            }
+            objReader.Close();
+            return STATInfoList;
+    }
+        private string strCriteriaSqlWhere(STATInfoSearchCriteria criteria) {
+            StringBuilder sqlwhere = new StringBuilder(" WHERE 1=1");
+            if(criteria.STATId!=null)
+            sqlwhere.AppendFormat(" AND STATId={0}", criteria.STATId);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND QQ={0}", criteria.QQ);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND GroupNo={0}", criteria.GroupNo);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND UserName={0}", criteria.UserName);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND Tag={0}", criteria.Tag);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND Tips={0}", criteria.Tips);
+            if (criteria.STATId != null)
+                sqlwhere.AppendFormat(" AND status={0}", criteria.status);
+
+            return sqlwhere.ToString();
         }
 
         /// <summary>

@@ -120,7 +120,7 @@ namespace FMM.Service.Statistics
 
         public List<STATInfo> getSTATInfoListbyCriteria(STATInfoSearchCriteria criteria)
         {
-            throw new NotImplementedException();
+            return statInfoBusiness.getSTATInfoListByCriteria(criteria);
         }
 
         void ISTATInfoService.UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)

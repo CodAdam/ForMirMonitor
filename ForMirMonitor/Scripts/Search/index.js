@@ -1,5 +1,4 @@
-﻿
-$(function () {
+﻿$(function () {
 
     //1.初始化Table
     var oTable = new TableInit();
@@ -9,7 +8,124 @@ $(function () {
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
+    $("#Query").click(function () {
+        QueryPost(1);
+    });
+
+    $("#download").click(function () {
+
+
+        var path = "http://pic23.nipic.com/20120817/10703279_193118224000_2.jpg";
+        var filename = "testfile";
+        $.ajax({
+            type: "post",
+            url: "/home/DownLoad",
+            data: { strName: filename, strPath: path },
+            dataType: "json",
+            success: function (data) {
+                alert("下载完成");
+            }
+        });
+        alert(1);
+    });
+    /* RMA规则信息查询 */
+    function QueryPost(pageNo) {
+
+        var queryModel = getQuery(pageNo);
+        if (queryModel == null) {
+            alert("查询异常");
+            return;
+        }
+        //var loading = new YTErp.UI.Forms.Loading("#RMARuleList");
+        $.ajax(
+        {
+            url: "/search/Query",
+            type: "POST",
+            data: queryModel,
+            //beforeSend: function () {
+            //    AjaxStart();
+            //},
+            //complete: function () {
+            //    AjaxStop();
+            //},
+            success: function (data) {
+                //$("#RMARuleList").html(data.PagersRMARuleHtml);
+                $("#topRMAPageInfo").html(data.PagersTopHtml);
+                $("#bottomRMAPageInfo").html(data.PagersBottomHtml);
+                //GetCheckedByHidden();
+                //$("#hiddenQueryModel").val($.telerik.toJson(queryModel));
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
+            }
+        });
+    }
+    /* RMA规则信息查询结束 */
+
+    //获取查询条件
+    function getQuery(pageNo) {
+        var obj = {
+            "query.STATId": $("#STATId").val(),
+            "query.BeginDate": $("#BeginDate").val(),
+            "query.EndDate": $("#EndDate").val(),
+            "query.QQ": $("#QQ").val(),
+            "query.GroupNO": $("#GroupNO").val(),
+            "query.Tag": $("#Tag").val(),
+            "query.Status": $("#Status").val(),
+            // "query.PageType": $("#hiddenPageType").val(),
+            "pager.CurrentPage": pageNo,
+            "pager.PageSize": "10"
+        };
+        return obj;
+    }
+    /* 翻页查询信息(TOP) */
+    function HeadPageRMARule() {//首页
+        if ($("span[name='currentpageRMARule']").eq(0).text() == "1") {
+            alert("当前已经是首页");
+            return;
+        }
+        QueryPost(1);
+    }
+    function PrePageRMARule() {//上一页
+        if ($("span[name='currentpageRMARule']").eq(0).text() == "1") {
+            alert("当前已经是首页");
+            return;
+        }
+        QueryPost($("span[name='currentpageRMARule']").eq(0).text() * 1 - 1);
+    }
+    function NextPageRMARule() {//下一页
+        if ($("span[name='currentpageRMARule']").eq(0).text() == $("span[name='totalpagesRMARule']").eq(0).text()) {
+            alert("当前已经是最后一页");
+            return;
+        }
+        QueryPost($("span[name='currentpageRMARule']").eq(0).text() * 1 + 1);
+    }
+    function EndPageRMARule() {//末页
+        if ($("span[name='currentpageRMARule']").eq(0).text() == $("span[name='totalpagesRMARule']").eq(0).text()) {
+            alert("当前已经是最后一页");
+            return;
+        }
+        QueryPost($("span[name='totalpagesRMARule']").eq(0).text() * 1);
+    }
+    function PageGORMARule() {//跳转
+        if ($("input[name='gotopageRMARule']").val() == "") return;
+        if ($("input[name='gotopageRMARule']").val() * 1 >= $("span[name='totalpagesRMARule']").eq(0).text() * 1) {
+            QueryPost($("span[name='totalpagesRMARule']").eq(0).text() * 1);
+        }
+        else if ($("input[name='gotopageRMARule']").val() * 1 == $("span[name='currentpageRMARule']").eq(0).text() * 1) {
+            return;
+        }
+        else {
+            QueryPost($("input[name='gotopageRMARule']").val());
+        }
+    }
+    /* 翻页.RMA规则查询信息结束 */
+
 });
+
+
+
 
 
 var TableInit = function () {
@@ -17,7 +133,7 @@ var TableInit = function () {
     //初始化Table
     oTableInit.Init = function () {
         $('#tb_statinfo').bootstrapTable({
-            url: '/Search/GetStatInfoTable',         //请求后台的URL（*）
+            url: '/search/GetStatInfoTable',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -72,10 +188,22 @@ var TableInit = function () {
 
     //得到查询的参数
     oTableInit.queryParams = function (params) {
+        function getCriteria() {
+            var obj = {
+                "query.STATId": $("#STATId").val(),
+                "query.BeginDate": $("#BeginDate").val(),
+                "query.EndDate": $("#EndDate").val(),
+                "query.QQ": $("#QQ").val(),
+                "query.GroupNO": $("#GroupNO").val(),
+                "query.Tag": $("#Tag").val(),
+                "query.Status": $("#Status").val(),
+            };
+            return obj;
+        }
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
             offset: params.offset, //页码
-            criteria: getQuery(1), //查询条件        
+            criteria: getCriteria(), //查询条件        
         };
         return temp;
     };
@@ -181,4 +309,4 @@ var ButtonInit = function () {
     };
 
     return oInit;
-};
+}; 

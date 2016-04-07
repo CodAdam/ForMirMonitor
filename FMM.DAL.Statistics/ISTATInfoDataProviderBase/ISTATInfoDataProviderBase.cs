@@ -47,6 +47,14 @@ namespace FMM.DAL.Statistics
         Pager<STATInfo> getSTATInfoPagerListByCriteria(STATInfoSearchCriteria criteria, int pageIndex, int pageSizecriteria);
 
         /// <summary>
+        /// 根据条件获取STATInfoList
+        /// </summary>
+        /// <param name="pageSizecriteria"></param>
+        /// <returns></returns>
+        List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria);
+
+
+        /// <summary>
         /// 作废STATInfo
         /// </summary>
         void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator);
@@ -63,6 +71,9 @@ namespace FMM.DAL.Statistics
         /// </summary>
         /// <param name="statinfo"></param>
         void ImportSTATInfo(STATInfo statinfo);
- 
+
+
+
+
     }
 }

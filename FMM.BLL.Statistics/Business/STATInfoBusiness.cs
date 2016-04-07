@@ -59,8 +59,7 @@ namespace FMM.BLL.Statistics
         /// <param name="criteria"></param>
         /// <returns></returns>
         public List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria) {
-            List<STATInfo> STATInfoList = new List<STATInfo>();
-            return STATInfoList;
+            return (statInfoDataAccess.getSTATInfoListByCriteria(criteria));
         }
 
         /// <summary>
