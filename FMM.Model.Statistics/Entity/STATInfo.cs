@@ -46,13 +46,19 @@ namespace FMM.Model.Statistics
         /// 录入时间
         /// </summary>
         [DataMember]
-        public DateTime? Indate { get; set; }
+        public DateTime Indate { get; set; }
 
         /// <summary>
         /// 编辑时间
         /// </summary>
         [DataMember]
-	    public DateTime? Eidtdate { get; set; }
+	    public DateTime Eidtdate { get; set; }
+
+        /// <summary>
+        /// 操作人Id
+        ///</summary>
+        [DataMember]
+        public string OperatorId { get; set; }
 
         /// <summary>
         /// 操作人
@@ -64,6 +70,6 @@ namespace FMM.Model.Statistics
         /// 状态
         /// </summary>
         [DataMember]
-        public int Status { get; set; }
+        public int? Status { get; set; }
     }
 }

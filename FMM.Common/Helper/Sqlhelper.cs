@@ -11,7 +11,7 @@ namespace FMM.Common.Helper
     public class SQLHelper
     {
         public static readonly string connString =
-           ConfigurationManager.ConnectionStrings["connString"].ToString();
+           ConfigurationManager.ConnectionStrings["FMMDBC"].ToString();
         /// <summary>
         /// 执行增、删、改（insert/update/delete）
         /// </summary>

@@ -130,7 +130,7 @@ namespace FMM.Service.Statistics
 
         void ISTATInfoService.AddSTATInfo(STATInfo statinfo)
         {
-            throw new NotImplementedException();
+            statInfoBusiness.AddSTATInfo(statinfo);
         }
 
         void ISTATInfoService.ImportSTATInfo(STATInfo statinfo)

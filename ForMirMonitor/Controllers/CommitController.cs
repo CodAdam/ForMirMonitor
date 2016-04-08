@@ -22,20 +22,25 @@ namespace ForMirMonitor.Controllers
         public ActionResult CommitSTATInfo()
         {
             STATInfo statInfo = new STATInfo();
-            ////statInfo.QQ=long.Parse(Request["QQ"]) ;            
-            ////statInfo.GroupNo = int.Parse(Request["group"]);
-            ////statInfo.UserName =Request["group"];
-            ////statInfo.Tag = int.Parse(Request["group"]);
-            ////statInfo.Tips = Request["tips"];
+            statInfo.QQ=long.Parse(Request["QQ"]) ;            
+            statInfo.GroupNo = int.Parse(Request["GroupNo"]);
+            statInfo.UserName =Request["ID"];
+            statInfo.Tag = int.Parse(Request["Tag"]);
+            statInfo.Tips = Request["Tips"];
+            //statInfo.Indate = "";
+            //statInfo.Eidtdate = "";
+            //statInfo.Operator = "0";
+            //statInfo.OperatorId = "0";
+            statInfo.Status = 1;
             try
             {
                 STATInfoService.AddSTATInfo(statInfo);
             }
             catch(Exception ex) {
                 return Content(ex.Message);
-                
+                //log
             }
-            return View();
+            return View("Index");
 
         }
 

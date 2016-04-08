@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
-using System.Data.Common;
 using System.Data;
 using FMM.Common.Helper;
 using System.Data.SqlClient;
@@ -24,8 +23,9 @@ namespace FMM.DAL.Statistics
               ,[Tag]
               ,[Tips]
               ,[Indate]
-              ,[EditDate]
-              ,[Oprator]
+              ,[Editdate]
+              ,[OperatorId]
+              ,[Operator]
               ,[Status]
           FROM [STATDB].[dbo].[STATInfo]  with(nolock) ";
 
@@ -59,46 +59,44 @@ namespace FMM.DAL.Statistics
 
         #region InsertSTATInfo
 
-        string InsertSTATInfo = @"INSERT INTO [YinTaiService].[dbo].[RMARule]
-                                                    ([STATId]
-                                                    ,[QQ]
+        string InsertSTATInfo = @"INSERT INTO [STATDB].[dbo].[STATInfo] 
+                                                    ([QQ]
                                                     ,[GroupNo]
                                                     ,[UserName]
                                                     ,[Tag]
                                                     ,[Tips]
                                                     ,[Indate]
                                                     ,[EditDate]
-                                                    ,[Oprator]
+                                                    ,[OperatorId]
+                                                    ,[Operator]
                                                     ,[Status])
                                              VALUES
-                                                    (@STATId
-                                                    ,@QQ
-                                                    ,@GroupNo
-                                                    ,@UserName
-                                                    ,@Tag
-                                                    ,@Tips
-                                                    ,@Indate
-                                                    ,@EditDate
-                                                    ,@Oprator
-                                                    ,@Status)
-                                        ";
+                                                    ({0}
+                                                    ,{1}
+                                                    ,'{2}'
+                                                    ,'{3}'
+                                                    ,'{4}'
+                                                    ,'{5}'
+                                                    ,'{6}'
+                                                    ,'{7}'
+                                                    ,'{8}'
+                                                    ,{9})";
 
         #endregion
 
         #region STATInfo
 
-        readonly string strUpdateRMARule = @"UPDATE [YinTaiService].[dbo].[RMARule] SET 
-                                                     [STATId]=@STATId
-                                                    ,[QQ]=@QQ
-                                                    ,[GroupNo]=@GroupNo
-                                                    ,[UserName]=@UserName
-                                                    ,[Tag]=@Tag
-                                                    ,[Tips]=@Tips
-                                                    ,[Indate]=@Indate
-                                                    ,[EditDate]=@EditDate
-                                                    ,[Oprator]=@Oprator
-                                                    ,[Status]=@Status
-                                             WHERE [STATId]=@STATId";
+        readonly string strUpdateRMARule = @"UPDATE [STATDB].[dbo].[STATInfo] SET 
+                                                     [QQ]={0}
+                                                    ,[GroupNo]={1}
+                                                    ,[UserName]={2}
+                                                    ,[Tag]={3}
+                                                    ,[Tips]={4}
+                                                    ,[Indate]={5}
+                                                    ,[EditDate]={6}
+                                                    ,[Oprator]={7}
+                                                    ,[Status]={8}
+                                             WHERE [STATId]={9}";
 
         #endregion
         #endregion 
@@ -226,28 +224,56 @@ namespace FMM.DAL.Statistics
         /// <param name="statinfo">统计信息实体</param>
         public void AddSTATInfo(STATInfo statinfo)
         {
-            string sql=AddInparaByInsert(statinfo);
-            int result=SQLHelper.Update(sql);
+            StringBuilder sql = new StringBuilder();
+            sql.Append(AddInparaForInsert(statinfo));
+            try
+            {
+                int result = SQLHelper.Update(sql.ToString());
+            }
+            catch {
+
+            }
         }
         /// <summary>
         /// 新增用到的参数
         /// </summary>
         /// <param name="cmd"></param>
         /// <param name="Entity"></param>
-        string AddInparaByInsert(STATInfo Entity)
+        private string AddInparaForInsert(STATInfo statinfo)
         {
-            // InsertSTATInfo.Replace("@QQ", "\'" + Entity.QQ.ToString() + "'\'");
-            InsertSTATInfo.Replace("@QQ","\'"+Entity.QQ.ToString()+"'\'");
-            InsertSTATInfo.Replace("@UserName", "\'"+Entity.QQ.ToString()+ "\'");
-            InsertSTATInfo.Replace("@Tag", "\'"+Entity.QQ.ToString()+ "\'");
-            InsertSTATInfo.Replace("@Tips", "\'"+Entity.QQ.ToString()+ "\'");
-            InsertSTATInfo.Replace("@Indate", "\'"+DataSetDateTime.Local.ToString()+ "\'");
-            InsertSTATInfo.Replace("@EditDate", "\'"+ DataSetDateTime.Local.ToString()+ "\'");
-            InsertSTATInfo.Replace("@Oprator", "\'0\'");
-            InsertSTATInfo.Replace("@Status", "\'1\'");
-            return InsertSTATInfo;
+            string InsertSTATInfosql ="";
+            STATInfo InsertModel = new STATInfo();
+            InsertModel = MakeInsertModel(statinfo);
+            InsertSTATInfosql = String.Format(InsertSTATInfo,
+                InsertModel.QQ,
+                InsertModel.GroupNo,
+                InsertModel.UserName,
+                InsertModel.Tag,
+                InsertModel.Tips,
+                InsertModel.Indate,
+                InsertModel.Eidtdate,
+                InsertModel.OperatorId,
+                InsertModel.Operator,
+                InsertModel.Status);
+            return InsertSTATInfosql;
         }
 
+        private STATInfo MakeInsertModel(STATInfo statinfo) {
+            STATInfo InsertModel = new STATInfo();
+            InsertModel.QQ = statinfo.QQ;
+            InsertModel.GroupNo=statinfo.GroupNo;
+            InsertModel.Tips=statinfo.Tips;
+            //InsertModel.Indate=statinfo.Indate==null ?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
+            //InsertModel.Eidtdate=statinfo.Eidtdate==null? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
+            InsertModel.Indate = statinfo.Indate == null ? DateTime.Now: DateTime.Now;
+            InsertModel.Eidtdate = statinfo.Eidtdate == null ? DateTime.Now: statinfo.Indate;
+            InsertModel.OperatorId=statinfo.OperatorId==null?"0":statinfo.OperatorId;
+            InsertModel.UserName=statinfo.UserName;
+            InsertModel.Tag=statinfo.Tag;
+            InsertModel.Operator= statinfo.Operator==null?"0":statinfo.Operator;
+            InsertModel.Status= statinfo.Status==null?1: statinfo.Status;
+            return InsertModel;
+        }
         /// <summary>
         /// Excel导入统计信息
         /// </summary>

@@ -85,7 +85,7 @@ namespace FMM.BLL.Statistics
         /// <param name="statinfo">统计信息实体</param>
         public void AddSTATInfo(STATInfo statinfo)
         {
-
+            statInfoDataAccess.AddSTATInfo(statinfo);
         }
 
         /// <summary>

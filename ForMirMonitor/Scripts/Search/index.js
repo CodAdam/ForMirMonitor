@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿
+$(function () {
 
     //1.初始化Table
     var oTable = new TableInit();
@@ -9,7 +10,7 @@
     oButtonInit.Init();
 
     $("#Query").click(function () {
-        QueryPost(1);
+        oTable.Init();
     });
 
     $("#download").click(function () {
@@ -31,7 +32,7 @@
     /* RMA规则信息查询 */
     function QueryPost(pageNo) {
 
-        var queryModel = getQuery(pageNo);
+        var queryModel = getQuery();
         if (queryModel == null) {
             alert("查询异常");
             return;
@@ -39,8 +40,8 @@
         //var loading = new YTErp.UI.Forms.Loading("#RMARuleList");
         $.ajax(
         {
-            url: "/search/Query",
-            type: "POST",
+            url: "/search/GetStatInfoTable",
+            type: "get",
             data: queryModel,
             //beforeSend: function () {
             //    AjaxStart();
@@ -50,8 +51,8 @@
             //},
             success: function (data) {
                 //$("#RMARuleList").html(data.PagersRMARuleHtml);
-                $("#topRMAPageInfo").html(data.PagersTopHtml);
-                $("#bottomRMAPageInfo").html(data.PagersBottomHtml);
+               // $("#topRMAPageInfo").html(data.PagersTopHtml);
+                //$("#bottomRMAPageInfo").html(data.PagersBottomHtml);
                 //GetCheckedByHidden();
                 //$("#hiddenQueryModel").val($.telerik.toJson(queryModel));
 
@@ -64,7 +65,7 @@
     /* RMA规则信息查询结束 */
 
     //获取查询条件
-    function getQuery(pageNo) {
+    function getQuery() {
         var obj = {
             "query.STATId": $("#STATId").val(),
             "query.BeginDate": $("#BeginDate").val(),
@@ -73,9 +74,6 @@
             "query.GroupNO": $("#GroupNO").val(),
             "query.Tag": $("#Tag").val(),
             "query.Status": $("#Status").val(),
-            // "query.PageType": $("#hiddenPageType").val(),
-            "pager.CurrentPage": pageNo,
-            "pager.PageSize": "10"
         };
         return obj;
     }
@@ -146,15 +144,15 @@ var TableInit = function () {
             pageNumber: 1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-            search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            strictSearch: true,
+            search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            strictSearch: false,
             showColumns: true,                  //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
-            minimumCountColumns: 2,             //最少允许的列数
-            clickToSelect: true,                //是否启用点击选中行
+            //minimumCountColumns: 5,            //最少允许的列数
+            clickToSelect: false,                //是否启用点击选中行
             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
-            showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
+            showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                   //是否显示父子表
             columns: [{
@@ -169,7 +167,7 @@ var TableInit = function () {
                 field: 'GroupNo',
                 title: 'GroupNo'
             }, {
-                field: 'Id',
+                field: 'UserName',
                 title: 'Id'
             }, {
                 field: 'Tag',
