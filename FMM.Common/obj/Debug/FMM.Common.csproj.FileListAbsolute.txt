@@ -12,3 +12,6 @@ E:\ForMirMonitor\FMM.Common\bin\Debug\log4net.xml
 E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.csprojResolveAssemblyReference.cache
 E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.dll
 E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.pdb
+E:\ForMirMonitor\FMM.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\ForMirMonitor\FMM.Common\bin\Debug\Ionic.Zip.dll
+E:\ForMirMonitor\FMM.Common\bin\Debug\NPOI.dll

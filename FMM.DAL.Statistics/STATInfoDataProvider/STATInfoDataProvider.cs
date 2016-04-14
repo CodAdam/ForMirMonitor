@@ -170,39 +170,39 @@ namespace FMM.DAL.Statistics
             StringBuilder sql = new StringBuilder("");
             sql.Append(strSTATInfoSelectSQL);
             sql.Append(strCriteriaSqlWhere(criteria));
-  
 
-            List<STATInfo> STATInfoList = new List<STATInfo>();
-            for (int i = 100; i < 200; i++)
-            {
-                STATInfoList.Add(new STATInfo()
-                {
-                    STATId = i,
-                    QQ = 132123541+i,
-                    GroupNo = 1,
-                    UserName = "testadam",
-                    Tag = 2,
-                    Tips = "lala",
-                    Status = 1
-                });
-            }
-            //SqlDataReader objReader = SQLHelper.GetReader(sql.ToString());
 
             //List<STATInfo> STATInfoList = new List<STATInfo>();
-            //while (objReader.Read())
+            //for (int i = 100; i < 200; i++)
             //{
             //    STATInfoList.Add(new STATInfo()
             //    {
-            //    STATId = Convert.ToInt32(objReader["STATId"]),
-            //    QQ = Convert.ToInt32(objReader["QQ"]),                
-            //    GroupNo= Convert.ToInt32(objReader["GroupNo"]),
-            //    UserName= Convert.ToString(objReader["UserName"]),
-            //    Tag= Convert.ToInt32(objReader["Tag"]),
-            //    Tips= Convert.ToString(objReader["Tips"]),
-            //    Status= Convert.ToInt32(objReader["Status"])
+            //        STATId = i,
+            //        QQ = 132123541+i,
+            //        GroupNo = 1,
+            //        UserName = "testadam",
+            //        Tag = 2,
+            //        Tips = "lala",
+            //        Status = 1
             //    });
             //}
-            //objReader.Close();
+            SqlDataReader objReader = SQLHelper.GetReader(sql.ToString());
+
+            List<STATInfo> STATInfoList = new List<STATInfo>();
+            while (objReader.Read())
+            {
+                STATInfoList.Add(new STATInfo()
+                {
+                    STATId = Convert.ToInt32(objReader["STATId"]),
+                    QQ = Convert.ToInt32(objReader["QQ"]),
+                    GroupNo = Convert.ToInt32(objReader["GroupNo"]),
+                    UserName = Convert.ToString(objReader["UserName"]),
+                    Tag = Convert.ToInt32(objReader["Tag"]),
+                    Tips = Convert.ToString(objReader["Tips"]),
+                    Status = Convert.ToInt32(objReader["Status"])
+                });
+            }
+            objReader.Close();
 
             return STATInfoList;
     }

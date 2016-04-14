@@ -138,7 +138,6 @@ E:\ForMirMonitor\ForMirMonitor\bin\FMM.Common.dll
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.Model.Statistics.dll
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Common.dll
 E:\ForMirMonitor\ForMirMonitor\bin\FMM.Service.Statistics.dll
-E:\ForMirMonitor\ForMirMonitor\bin\ICSharpCode.SharpZipLib.dll
 E:\ForMirMonitor\ForMirMonitor\bin\log4net.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.AspNet.Identity.Core.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.AspNet.Identity.EntityFramework.dll
@@ -158,10 +157,6 @@ E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.Configuration.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Web.Infrastructure.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Newtonsoft.Json.dll
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.dll
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.OOXML.dll
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.OpenXml4Net.dll
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.OpenXmlFormats.dll
 E:\ForMirMonitor\ForMirMonitor\bin\Owin.dll
 E:\ForMirMonitor\ForMirMonitor\bin\System.Net.Http.Formatting.dll
 E:\ForMirMonitor\ForMirMonitor\bin\System.Web.Helpers.dll
@@ -187,9 +182,6 @@ E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.ServiceLocation.xml
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.xml
 E:\ForMirMonitor\ForMirMonitor\bin\Microsoft.Practices.Unity.Configuration.xml
 E:\ForMirMonitor\ForMirMonitor\bin\Newtonsoft.Json.xml
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.xml
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.OOXML.xml
-E:\ForMirMonitor\ForMirMonitor\bin\NPOI.OpenXml4Net.xml
 E:\ForMirMonitor\ForMirMonitor\bin\System.Web.Helpers.xml
 E:\ForMirMonitor\ForMirMonitor\bin\System.Web.Mvc.xml
 E:\ForMirMonitor\ForMirMonitor\bin\System.Web.Optimization.xml
@@ -242,3 +234,5 @@ E:\ForMirMonitor\ForMirMonitor\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAcco
 E:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.csprojResolveAssemblyReference.cache
 E:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.dll
 E:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.pdb
+E:\ForMirMonitor\ForMirMonitor\bin\Ionic.Zip.dll
+E:\ForMirMonitor\ForMirMonitor\bin\NPOI.dll

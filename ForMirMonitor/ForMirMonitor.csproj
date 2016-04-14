@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.1.2.4\lib\net40\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -67,6 +71,10 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.1.2.4\lib\net40\NPOI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -214,6 +222,10 @@
     <Compile Include="ViewModels\SearchViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\NPOI\Ionic_Utils_Zip_license.txt" />
+    <Content Include="App_Readme\NPOI\License.txt" />
+    <Content Include="App_Readme\NPOI\Read Me.txt" />
+    <Content Include="App_Readme\NPOI\Release Notes.txt" />
     <Content Include="Content\bootstrap-datetimepicker-master\.gitattributes" />
     <Content Include="Content\bootstrap-datetimepicker-master\.gitignore" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -433,7 +445,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
