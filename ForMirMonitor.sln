@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMirMonitor", "ForMirMonitor\ForMirMonitor.csproj", "{343DEC20-2B6F-4D51-A805-86265A5AC101}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.Service.Common", "FMM.Service.Common\FMM.Service.Common.csproj", "{37110DB2-7B1D-4B5A-874C-308912876F6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMM.Common", "FMM.Common\FMM.Common.csproj", "{BE53A228-28BC-42C2-8487-BD0124ACC8D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DBSCRIPT", "DBSCRIPT", "{23A23546-5BC8-4E55-880B-8C55DBA396AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

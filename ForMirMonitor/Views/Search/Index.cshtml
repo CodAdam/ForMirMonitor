@@ -15,8 +15,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
 <script src="~/Scripts/bootstrap.js"></script>
 
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 
 @*2、bootstrap组件引用*@
@@ -131,81 +129,28 @@
                 </div>
             </div>
             <div>
+                <button id="Add" type="button" class="btn btn-info btn-sm">
+                    <span class="">新增</span>
+                </button>
                 <button id="Download_commmit_model" type="button" class="btn btn-info btn-sm">
                     <span class="">下载模板</span>
                 </button>
-                <button id="Download_commmit_model" type="button" class="btn btn-info btn-sm">
+                <button id="DataExport" type="button" class="btn btn-info btn-sm">
                     <span class="">数据导出</span>
                 </button>
-                <button id="Download_commmit_model" type="button" class="btn btn-info btn-sm">
+                <button id="DataInport" type="button" class="btn btn-info btn-sm">
                     <span class="">数据导入</span>
                 </button>
-                <button id="Download_commmit_model" type="button" class="btn btn-info btn-sm">
+                <button id="Edit" type="button" class="btn btn-info btn-sm">
                     <span class="">编辑</span>
                 </button>
-                <button id="Download_commmit_model" type="button" class="btn btn-danger btn-sm">
+                <button id="Invalid" type="button" class="btn btn-danger btn-sm">
                     <span class="">作废</span>
                 </button>
             </div>
             <div class="panel panel-info" style="margin-top:5px">
-                @*@Html.Raw(Model.PagersTopHtml)
-    <div class="panel-body">
-        <table class="table table-bordered table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th>
-                        STATId
-                    </th>
-                    <th>
-                        QQ
-                    </th>
-                    <th>
-                        GroupNo
-                    </th>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Tag
-                    </th>
-                    <th>
-                        Tips
-                    </th>
-                    <th>
-                        Status
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="STATInfoList">
-                @Html.Raw(Model.STATInfoListHtml)
-            </tbody>
-        </table>
-        <div>
-            @Html.Raw(Model.PagersBottomHtml)
-        </div>*@
                     <div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">查询条件</div>
-                            <div class="panel-body">
-                                <form id="formSearch" class="form-horizontal">
-                                    <div class="form-group" style="margin-top:15px">
-                                        <label class="control-label col-sm-1" for="txt_search_departmentname">部门名称</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="txt_search_departmentname">
-                                        </div>
-                                        <label class="control-label col-sm-1" for="txt_search_statu">状态</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control" id="txt_search_statu">
-                                        </div>
-                                        <div class="col-sm-4" style="text-align:left;">
-                                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary">查询</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div id="toolbar" class="btn-group">
+                        @*<div id="toolbar" class="btn-group">
                             <button id="btn_add" type="button" class="btn btn-default">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
                             </button>
@@ -215,30 +160,14 @@
                             <button id="btn_delete" type="button" class="btn btn-default">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
                             </button>
-                        </div>
+                        </div>*@
                         <table id="tb_statinfo"></table>
                     </div>
 
 
                 </div>
-                <div class="progress progress-striped active">
-                    <div class="progress-bar progress-bar-success" role="progressbar"
-                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                         style="width: 40%;">
-                        <span class="sr-only">40% 完成</span>
-                    </div>
-                </div>
-
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">面板标题</h3>
-                    </div>
-                    <div class="panel-body">
-                        这是一个基本的面板
-                    </div>
-                </div>
             </div>
         </div>
-        </div>
-    </div>
+  </div>
+
 

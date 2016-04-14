@@ -9,9 +9,6 @@ $(function () {
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
-    $("#Query").click(function () {
-        oTable.Init();
-    });
 
     $("#download").click(function () {
 
@@ -29,97 +26,6 @@ $(function () {
         });
         alert(1);
     });
-    /* RMA规则信息查询 */
-    function QueryPost(pageNo) {
-
-        var queryModel = getQuery();
-        if (queryModel == null) {
-            alert("查询异常");
-            return;
-        }
-        //var loading = new YTErp.UI.Forms.Loading("#RMARuleList");
-        $.ajax(
-        {
-            url: "/search/GetStatInfoTable",
-            type: "get",
-            data: queryModel,
-            //beforeSend: function () {
-            //    AjaxStart();
-            //},
-            //complete: function () {
-            //    AjaxStop();
-            //},
-            success: function (data) {
-                //$("#RMARuleList").html(data.PagersRMARuleHtml);
-               // $("#topRMAPageInfo").html(data.PagersTopHtml);
-                //$("#bottomRMAPageInfo").html(data.PagersBottomHtml);
-                //GetCheckedByHidden();
-                //$("#hiddenQueryModel").val($.telerik.toJson(queryModel));
-
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("error");
-            }
-        });
-    }
-    /* RMA规则信息查询结束 */
-
-    //获取查询条件
-    function getQuery() {
-        var obj = {
-            "query.STATId": $("#STATId").val(),
-            "query.BeginDate": $("#BeginDate").val(),
-            "query.EndDate": $("#EndDate").val(),
-            "query.QQ": $("#QQ").val(),
-            "query.GroupNO": $("#GroupNO").val(),
-            "query.Tag": $("#Tag").val(),
-            "query.Status": $("#Status").val(),
-        };
-        return obj;
-    }
-    /* 翻页查询信息(TOP) */
-    function HeadPageRMARule() {//首页
-        if ($("span[name='currentpageRMARule']").eq(0).text() == "1") {
-            alert("当前已经是首页");
-            return;
-        }
-        QueryPost(1);
-    }
-    function PrePageRMARule() {//上一页
-        if ($("span[name='currentpageRMARule']").eq(0).text() == "1") {
-            alert("当前已经是首页");
-            return;
-        }
-        QueryPost($("span[name='currentpageRMARule']").eq(0).text() * 1 - 1);
-    }
-    function NextPageRMARule() {//下一页
-        if ($("span[name='currentpageRMARule']").eq(0).text() == $("span[name='totalpagesRMARule']").eq(0).text()) {
-            alert("当前已经是最后一页");
-            return;
-        }
-        QueryPost($("span[name='currentpageRMARule']").eq(0).text() * 1 + 1);
-    }
-    function EndPageRMARule() {//末页
-        if ($("span[name='currentpageRMARule']").eq(0).text() == $("span[name='totalpagesRMARule']").eq(0).text()) {
-            alert("当前已经是最后一页");
-            return;
-        }
-        QueryPost($("span[name='totalpagesRMARule']").eq(0).text() * 1);
-    }
-    function PageGORMARule() {//跳转
-        if ($("input[name='gotopageRMARule']").val() == "") return;
-        if ($("input[name='gotopageRMARule']").val() * 1 >= $("span[name='totalpagesRMARule']").eq(0).text() * 1) {
-            QueryPost($("span[name='totalpagesRMARule']").eq(0).text() * 1);
-        }
-        else if ($("input[name='gotopageRMARule']").val() * 1 == $("span[name='currentpageRMARule']").eq(0).text() * 1) {
-            return;
-        }
-        else {
-            QueryPost($("input[name='gotopageRMARule']").val());
-        }
-    }
-    /* 翻页.RMA规则查询信息结束 */
-
 });
 
 
@@ -143,12 +49,12 @@ var TableInit = function () {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber: 1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            pageList: [10],        //可供选择的每页的行数（*）
             search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: false,
-            showColumns: true,                  //是否显示所有的列
-            showRefresh: true,                  //是否显示刷新按钮
-            //minimumCountColumns: 5,            //最少允许的列数
+            showColumns: false,                  //是否显示所有的列
+            showRefresh: false,                  //是否显示刷新按钮
+            minimumCountColumns: 5,            //最少允许的列数
             clickToSelect: false,                //是否启用点击选中行
             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
@@ -186,22 +92,17 @@ var TableInit = function () {
 
     //得到查询的参数
     oTableInit.queryParams = function (params) {
-        function getCriteria() {
-            var obj = {
-                "query.STATId": $("#STATId").val(),
-                "query.BeginDate": $("#BeginDate").val(),
-                "query.EndDate": $("#EndDate").val(),
-                "query.QQ": $("#QQ").val(),
-                "query.GroupNO": $("#GroupNO").val(),
-                "query.Tag": $("#Tag").val(),
-                "query.Status": $("#Status").val(),
-            };
-            return obj;
-        }
+
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
             offset: params.offset, //页码
-            criteria: getCriteria(), //查询条件        
+            "criteria.STATId": $("#STATId").val(),
+            "criteria.BeginDate": $("#BeginDate").val(),
+            "criteria.EndDate": $("#EndDate").val(),
+            "criteria.QQ": $("#QQ").val(),
+            "criteria.GroupNO": $("#GroupNO").val(),
+            "criteria.Tag": $("#Tag").val(),
+            "criteria.Status": $("#Status").val(),
         };
         return temp;
     };
@@ -244,37 +145,37 @@ var ButtonInit = function () {
         //    $('#myModal').modal();
         //});
 
-        //$("#btn_delete").click(function () {
-        //    var arrselections = $("#tb_departments").bootstrapTable('getSelections');
-        //    if (arrselections.length <= 0) {
-        //        toastr.warning('请选择有效数据');
-        //        return;
-        //    }
+        $("#btn_delete").click(function () {
+            var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');
+            if (arrselections.length <= 0) {
+                toastr.warning('请选择有效数据');
+                return;
+            }
 
-        //    Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
-        //        if (!e) {
-        //            return;
-        //        }
-        //        $.ajax({
-        //            type: "post",
-        //            url: "/Home/Delete",
-        //            data: { "": JSON.stringify(arrselections) },
-        //            success: function (data, status) {
-        //                if (status == "success") {
-        //                    toastr.success('提交数据成功');
-        //                    $("#tb_departments").bootstrapTable('refresh');
-        //                }
-        //            },
-        //            error: function () {
-        //                toastr.error('Error');
-        //            },
-        //            complete: function () {
+            Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
+                if (!e) {
+                    return;
+                }
+                $.ajax({
+                    type: "post",
+                    url: "/Home/Invalid",
+                    data: { "": JSON.stringify(arrselections) },
+                    success: function (data, status) {
+                        if (status == "success") {
+                            toastr.success('所选数据已作废');
+                            $("#tb_departments").bootstrapTable('refresh');
+                        }
+                    },
+                    error: function () {
+                        toastr.error('Error');
+                    },
+                    complete: function () {
 
-        //            }
+                    }
 
-        //        });
-        //    });
-        //});
+                });
+            });
+        });
 
         //$("#btn_submit").click(function () {
         //    postdata.DEPARTMENT_NAME = $("#txt_departmentname").val();
@@ -300,10 +201,15 @@ var ButtonInit = function () {
 
         //    });
         //});
+        $("#Download_commmit_model").bind("click", function () { window.location.href = '/DownLoad/Commit_STATModel.xlsx'; });
 
-        //$("#btn_query").click(function () {
-        //    $("#tb_departments").bootstrapTable('refresh');
-        //});
+        $("#Query").click(function () {
+            $("#tb_statinfo").bootstrapTable('refresh');
+        });
+
+        $("#Add").bind("click", function () { window.location.href = '/Commit/Index'; });
+        $("#DataExport").bind("click", function () { window.location.href = '/Search/STATInfoExport'; });
+
     };
 
     return oInit;

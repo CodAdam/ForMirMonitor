@@ -40,7 +40,7 @@ namespace ForMirMonitor.Controllers
                 return Content(ex.Message);
                 //log
             }
-            return View("Index");
+            return View("Search/Index");
 
         }
 

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Extensions\EnumHelper.cs" />
     <Compile Include="Extensions\HtmlHelperExtension.cs" />
+    <Compile Include="Helper\Excelhelper.cs" />
     <Compile Include="Helper\Sqlhelper.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Paging\Page.cs" />

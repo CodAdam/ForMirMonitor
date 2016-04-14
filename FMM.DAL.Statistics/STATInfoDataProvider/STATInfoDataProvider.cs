@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System;
 using System.Text;
 
+
 namespace FMM.DAL.Statistics
 {
     public class STATInfoDataProvider : ISTATInfoDataProviderBase
@@ -170,42 +171,53 @@ namespace FMM.DAL.Statistics
             sql.Append(strSTATInfoSelectSQL);
             sql.Append(strCriteriaSqlWhere(criteria));
   
-            SqlDataReader objReader = SQLHelper.GetReader(sql.ToString());
 
             List<STATInfo> STATInfoList = new List<STATInfo>();
-          
-            while (objReader.Read())
+            for (int i = 100; i < 200; i++)
             {
                 STATInfoList.Add(new STATInfo()
                 {
-                STATId = Convert.ToInt32(objReader["STATId"]),
-                QQ = Convert.ToInt32(objReader["QQ"]),                
-                GroupNo= Convert.ToInt32(objReader["GroupNo"]),
-                UserName= Convert.ToString(objReader["UserName"]),
-                Tag= Convert.ToInt32(objReader["Tag"]),
-                Tips= Convert.ToString(objReader["Tips"]),
-                Status= Convert.ToInt32(objReader["Status"])
+                    STATId = i,
+                    QQ = 132123541+i,
+                    GroupNo = 1,
+                    UserName = "testadam",
+                    Tag = 2,
+                    Tips = "lala",
+                    Status = 1
                 });
             }
-            objReader.Close();
+            //SqlDataReader objReader = SQLHelper.GetReader(sql.ToString());
+
+            //List<STATInfo> STATInfoList = new List<STATInfo>();
+            //while (objReader.Read())
+            //{
+            //    STATInfoList.Add(new STATInfo()
+            //    {
+            //    STATId = Convert.ToInt32(objReader["STATId"]),
+            //    QQ = Convert.ToInt32(objReader["QQ"]),                
+            //    GroupNo= Convert.ToInt32(objReader["GroupNo"]),
+            //    UserName= Convert.ToString(objReader["UserName"]),
+            //    Tag= Convert.ToInt32(objReader["Tag"]),
+            //    Tips= Convert.ToString(objReader["Tips"]),
+            //    Status= Convert.ToInt32(objReader["Status"])
+            //    });
+            //}
+            //objReader.Close();
+
             return STATInfoList;
     }
         private string strCriteriaSqlWhere(STATInfoSearchCriteria criteria) {
             StringBuilder sqlwhere = new StringBuilder(" WHERE 1=1");
             if(criteria.STATId!=null)
             sqlwhere.AppendFormat(" AND STATId={0}", criteria.STATId);
-            if (criteria.STATId != null)
+            if (criteria.QQ != null)
                 sqlwhere.AppendFormat(" AND QQ={0}", criteria.QQ);
-            if (criteria.STATId != null)
+            if (criteria.GroupNo != null)
                 sqlwhere.AppendFormat(" AND GroupNo={0}", criteria.GroupNo);
-            if (criteria.STATId != null)
-                sqlwhere.AppendFormat(" AND UserName={0}", criteria.UserName);
-            if (criteria.STATId != null)
+            if (criteria.Tag != null)
                 sqlwhere.AppendFormat(" AND Tag={0}", criteria.Tag);
-            if (criteria.STATId != null)
-                sqlwhere.AppendFormat(" AND Tips={0}", criteria.Tips);
-            if (criteria.STATId != null)
-                sqlwhere.AppendFormat(" AND status={0}", criteria.status);
+            if (criteria.Status != null)
+                sqlwhere.AppendFormat(" AND status={0}", criteria.Status);
 
             return sqlwhere.ToString();
         }
@@ -266,7 +278,7 @@ namespace FMM.DAL.Statistics
             //InsertModel.Indate=statinfo.Indate==null ?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
             //InsertModel.Eidtdate=statinfo.Eidtdate==null? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
             InsertModel.Indate = statinfo.Indate == null ? DateTime.Now: DateTime.Now;
-            InsertModel.Eidtdate = statinfo.Eidtdate == null ? DateTime.Now: statinfo.Indate;
+            InsertModel.Eidtdate = statinfo.Eidtdate == null ? DateTime.Now: DateTime.Now;
             InsertModel.OperatorId=statinfo.OperatorId==null?"0":statinfo.OperatorId;
             InsertModel.UserName=statinfo.UserName;
             InsertModel.Tag=statinfo.Tag;

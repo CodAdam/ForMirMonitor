@@ -24,11 +24,6 @@ namespace FMM.Model.Statistics
             [DataMember]
             public int? GroupNo { get; set; }
 
-            /// <summary>
-            /// ID
-            /// </summary>
-            [DataMember]
-            public string UserName { get; set; }
 
             /// <summary>
             /// 标签编号
@@ -36,29 +31,24 @@ namespace FMM.Model.Statistics
             [DataMember]
             public int? Tag { get; set; }
 
-            /// <summary>
-            /// 备注
-            /// </summary>
-            [DataMember]
-            public string Tips { get; set; }
 
             /// <summary>
             /// 录入时间
             /// </summary>
             [DataMember]
-            public DateTime? Indate { get; set; }
+            public DateTime? BeginDate { get; set; }
 
             /// <summary>
             /// 编辑时间
             /// </summary>
             [DataMember]
-            public DateTime? Eidtdate { get; set; }
+            public DateTime? EndDate { get; set; }
 
             /// <summary>
             /// 状态
             /// </summary>
             [DataMember]
-            public int status { get; set; }
+            public int Status { get; set; }
         }
     
 }

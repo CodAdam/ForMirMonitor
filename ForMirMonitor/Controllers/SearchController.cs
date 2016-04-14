@@ -7,6 +7,7 @@ using Microsoft.Practices.Unity;
 using FMM.Common.Paging;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace ForMirMonitor.Controllers
 {
@@ -19,56 +20,7 @@ namespace ForMirMonitor.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            Pager<STATInfo> statInfoList = new Pager<STATInfo>();
-            try
-            {
-                STATInfoSearchCriteria criteria = new STATInfoSearchCriteria();
-
-                statInfoList = STATInfoService.getSTATInfoPagerListByCriteria(criteria, 1, 10);
-            }
-            catch (Exception ex)
-            {
-                //Yintai.ERP.Log.LogService.Instance.Warn("RMA规则页面失败！原因：" + ex.Message + "\r\n" + ex.StackTrace);
-            }
-            return View(new SearchViewListModels(statInfoList, new PageItem { TotalItemCount = (int)statInfoList.TotalRecords, PageSize = 10, CurrentPage = 1 }));
-        }
-
-        // GET: Search
-        public ActionResult getView()
-        {
-            STATInfo stat = new STATInfo();
-
-            SearchViewModels si = new SearchViewModels();
-            si.QQ =1910347321;
-            si.STATId = 1;
-            si.GroupNo = 1;
-            si.Eidtdate = DateTime.Now;
-            si.Indate = DateTime.Now;
-            si.Status = 1;
-            si.Tag = 1;
-            si.UserName = "0";
-            si.Tips = "hi~";
-            si.OperatorName = "0";
-            
-            return View(si);
-        }
-
-        /// <summary>
-        /// 查询
-        /// </summary>
-        /// <param name="Criteria"></param>
-        /// <param name="pager"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Query(STATInfoSearchCriteria Criteria, PageItem pager)
-        {
-            Pager<STATInfo> statInfoList = new Pager<STATInfo>();
-
-            statInfoList = STATInfoService.getSTATInfoPagerListByCriteria(Criteria, pager.CurrentPage, pager.PageSize);
-            pager.TotalItemCount = (int)statInfoList.TotalRecords;
-
-            SearchViewListModels model = new SearchViewListModels(statInfoList, pager);
-            return Json(new { PagersRMARuleHtml = model.STATInfoListHtml, PagersTopHtml = model.PagersTopHtml, PagersBottomHtml = model.PagersBottomHtml });
+            return View();
         }
 
         [HttpGet]
@@ -80,5 +32,38 @@ namespace ForMirMonitor.Controllers
             var rows = statInfoList.Skip(offset).Take(limit).ToList();
             return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult Invalid() {
+            return View();
+        }
+
+        
+        ////public ActionResult STATInfoExport()
+        ////{
+        ////    HSSFWorkbook hssfworkbook = new HSSFWorkbook();
+
+        ////    DocumentSummaryInformation dsi = PropertySetFactory.CreateDocumentSummaryInformation();
+        ////    dsi.Company = "NPOI Team";
+
+        ////    SummaryInformation si = PropertySetFactory.CreateSummaryInformation();
+        ////    si.Subject = "NPOI SDK Example";
+
+        ////    hssfworkbook.DocumentSummaryInformation = dsi;
+        ////    hssfworkbook.SummaryInformation = si;
+
+        ////    hssfworkbook.CreateSheet("Sheet1");
+        ////    //HSSFRow row1 = sheet1.CreateRow(0);
+        ////    //row1.CreateCell(0).SetCellValue(1);
+        ////    //sheet1.GetRow(0).CreateCell(0).SetCellValue("This is a Sample");
+
+        ////    hssfworkbook.CreateSheet("Sheet2");
+        ////    hssfworkbook.CreateSheet("Sheet3");
+        ////    FileStream file = new FileStream(@"test.xls", FileMode.Create);
+        ////    hssfworkbook.Write(file);
+        ////    file.Close();
+        ////    return View();
+        //}
+        
     }
 }
