@@ -15,3 +15,6 @@ E:\ForMirMonitor\FMM.Common\obj\Debug\FMM.Common.pdb
 E:\ForMirMonitor\FMM.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
 E:\ForMirMonitor\FMM.Common\bin\Debug\Ionic.Zip.dll
 E:\ForMirMonitor\FMM.Common\bin\Debug\NPOI.dll
+D:\YKL_G\ForMirMonitor\FMM.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\YKL_G\ForMirMonitor\FMM.Common\bin\Debug\Ionic.Zip.dll
+D:\YKL_G\ForMirMonitor\FMM.Common\bin\Debug\NPOI.dll

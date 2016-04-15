@@ -236,3 +236,5 @@ E:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.dll
 E:\ForMirMonitor\ForMirMonitor\obj\Debug\ForMirMonitor.pdb
 E:\ForMirMonitor\ForMirMonitor\bin\Ionic.Zip.dll
 E:\ForMirMonitor\ForMirMonitor\bin\NPOI.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\Ionic.Zip.dll
+D:\YKL_G\ForMirMonitor\ForMirMonitor\bin\NPOI.dll

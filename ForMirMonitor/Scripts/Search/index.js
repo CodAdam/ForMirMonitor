@@ -10,8 +10,20 @@ $(function () {
     oButtonInit.Init();
 
 
-    $("#download").click(function () {
+    $("#DataExport").click(function () {
+        $.ajax({
+            type: "post",
+            url: "/search/ExportSTATInfo",
+            data: getQueryModel(),
+            dataType: "json",
+            success: function (data) {
+                alert("下载完成");
+            }
+        });
+        alert(1);
+    });
 
+    $("#DataInport").click(function () {
 
         var path = "http://pic23.nipic.com/20120817/10703279_193118224000_2.jpg";
         var filename = "testfile";
@@ -26,6 +38,17 @@ $(function () {
         });
         alert(1);
     });
+    function getQueryModel(){
+        var obj={
+            "criteria.STATId": $("#STATId").val(),
+            "criteria.BeginDate": $("#BeginDate").val(),
+            "criteria.EndDate": $("#EndDate").val(),
+            "criteria.QQ": $("#QQ").val(),
+            "criteria.GroupNO": $("#GroupNO").val(),
+            "criteria.Tag": $("#Tag").val(),
+            "criteria.Status": $("#Status").val(),}
+        return obj;
+    }
 });
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FMM.Model.Statistics;
 using FMM.Common.Paging;
+using System.Data;
 
 namespace FMM.Service.Statistics
 {
@@ -59,6 +60,12 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="statinfo"></param>
         void ImportSTATInfo(STATInfo statinfo);
+
+        /// <summary>
+        /// Excel导出统计信息
+        /// </summary>
+        /// <param name="statinfo"></param>
+        DataTable ExportSTATInfo(STATInfoSearchCriteria criteria);
 
         #endregion
     }

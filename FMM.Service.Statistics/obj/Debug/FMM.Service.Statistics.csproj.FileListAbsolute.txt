@@ -82,3 +82,7 @@ D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\log4net.xml
 D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\FMM.DAL.Statistics.pdb
 E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\log4net.dll
 E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\log4net.xml
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\NPOI.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Ionic.Zip.dll
+E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\NPOI.dll
+E:\ForMirMonitor\FMM.Service.Statistics\bin\Debug\Ionic.Zip.dll

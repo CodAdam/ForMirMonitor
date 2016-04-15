@@ -8,6 +8,10 @@ using FMM.Common.Paging;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Data;
+using System.Web;
+using System.Text;
+using FMM.Common.Helper;
 
 namespace ForMirMonitor.Controllers
 {
@@ -38,32 +42,36 @@ namespace ForMirMonitor.Controllers
             return View();
         }
 
-        
-        ////public ActionResult STATInfoExport()
-        ////{
-        ////    HSSFWorkbook hssfworkbook = new HSSFWorkbook();
 
-        ////    DocumentSummaryInformation dsi = PropertySetFactory.CreateDocumentSummaryInformation();
-        ////    dsi.Company = "NPOI Team";
+        public void ExportSTATInfo(STATInfoSearchCriteria criteria)
+        { 
 
-        ////    SummaryInformation si = PropertySetFactory.CreateSummaryInformation();
-        ////    si.Subject = "NPOI SDK Example";
+            string strHeaderText="";
+            string strFileName="";
+            List<STATInfo> statInfoList = new List<STATInfo>();
+            DataTable dtSource = STATInfoService.ExportSTATInfo(criteria);
+            // = statInfoList;
+            // 设置编码和附件格式   
+            HttpContext.Response.ContentType = "application/vnd.ms-excel";
+            HttpContext.Response.ContentEncoding = Encoding.UTF8;
+            HttpContext.Response.Charset = "";
+            HttpContext.Response.AppendHeader("Content-Disposition",
+            "attachment;filename=" + HttpUtility.UrlEncode(strFileName, Encoding.UTF8));
+            Excelhelper eh = new Excelhelper();
+            HttpContext.Response.BinaryWrite(eh.Export(dtSource, strHeaderText).GetBuffer());
+            HttpContext.Response.End();
 
-        ////    hssfworkbook.DocumentSummaryInformation = dsi;
-        ////    hssfworkbook.SummaryInformation = si;
+        }
 
-        ////    hssfworkbook.CreateSheet("Sheet1");
-        ////    //HSSFRow row1 = sheet1.CreateRow(0);
-        ////    //row1.CreateCell(0).SetCellValue(1);
-        ////    //sheet1.GetRow(0).CreateCell(0).SetCellValue("This is a Sample");
-
-        ////    hssfworkbook.CreateSheet("Sheet2");
-        ////    hssfworkbook.CreateSheet("Sheet3");
-        ////    FileStream file = new FileStream(@"test.xls", FileMode.Create);
-        ////    hssfworkbook.Write(file);
-        ////    file.Close();
-        ////    return View();
-        //}
-        
+        /// <summary>读取excel   
+        /// 默认第一行为标头   
+        /// </summary>   
+        /// <param name="strFileName">excel文档路径</param>   
+        /// <returns></returns>   
+        public DataTable ImportSTATInfo(string strFileName)
+        {
+            Excelhelper eh = new Excelhelper();
+            return eh.Import(strFileName);
+        }
     }
 }
