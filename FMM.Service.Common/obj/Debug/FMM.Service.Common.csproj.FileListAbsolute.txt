@@ -19,3 +19,5 @@ E:\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.dll
 E:\ForMirMonitor\FMM.Service.Common\bin\Debug\log4net.xml
 E:\ForMirMonitor\FMM.Service.Common\bin\Debug\Ionic.Zip.dll
 E:\ForMirMonitor\FMM.Service.Common\bin\Debug\NPOI.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Debug\Ionic.Zip.dll
+D:\YKL_G\ForMirMonitor\FMM.Service.Common\bin\Debug\NPOI.dll

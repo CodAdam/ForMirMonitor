@@ -5,7 +5,7 @@ using FMM.Common.Paging;
 //using FMM.BLL.Statistics.InfoBus;
 using FMM.BLL.Statistics;
 using Microsoft.Practices.Unity;
-
+using System.Data;
 
 namespace FMM.Service.Statistics
 {
@@ -131,6 +131,14 @@ namespace FMM.Service.Statistics
         void ISTATInfoService.AddSTATInfo(STATInfo statinfo)
         {
             statInfoBusiness.AddSTATInfo(statinfo);
+        }
+
+        /// <summary>
+        /// Excel导出统计信息
+        /// </summary>
+        /// <param name="statinfo"></param>
+        public DataTable ExportSTATInfo(STATInfoSearchCriteria criteria) {
+            return (statInfoBusiness.ExportSTATInfo(criteria));
         }
 
         void ISTATInfoService.ImportSTATInfo(STATInfo statinfo)

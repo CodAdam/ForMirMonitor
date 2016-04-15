@@ -74,3 +74,5 @@ D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.xm
 D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\log4net.dll
 E:\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\log4net.xml
+D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\NPOI.dll
+D:\YKL_G\ForMirMonitor\FMM.DAL.Statistics\bin\Debug\Ionic.Zip.dll

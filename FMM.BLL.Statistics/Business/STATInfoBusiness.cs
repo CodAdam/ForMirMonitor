@@ -3,6 +3,7 @@ using FMM.Common.Paging;
 using FMM.Model.Statistics;
 using FMM.DAL.Statistics;
 using Microsoft.Practices.Unity;
+using System.Data;
 
 namespace FMM.BLL.Statistics
 {
@@ -97,5 +98,12 @@ namespace FMM.BLL.Statistics
 
         }
 
+        /// <summary>
+        /// Excel导出统计信息
+        /// </summary>
+        /// <param name="statinfo"></param>
+        public DataTable ExportSTATInfo(STATInfoSearchCriteria criteria) {
+            return (statInfoDataAccess.ExportSTATInfo(criteria));
+        }
     }
 }
