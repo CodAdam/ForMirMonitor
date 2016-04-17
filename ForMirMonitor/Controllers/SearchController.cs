@@ -38,6 +38,16 @@ namespace ForMirMonitor.Controllers
         }
 
         [HttpPost]
+        public JsonResult EditStatInfoById(STATInfo statInfo)
+        {
+            List<STATInfo> statInfoList = new List<STATInfo>();
+            //statInfoList = STATInfoService.getSTATInfoListbyCriteria(criteria);
+            var total = statInfoList.Count;
+            var rows = "";//statInfoList.Skip(offset).Take(limit).ToList();
+            return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public ActionResult Invalid() {
             return View();
         }

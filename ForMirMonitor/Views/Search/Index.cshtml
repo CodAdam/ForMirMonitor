@@ -5,29 +5,25 @@
 @using ForMirMonitor.ViewModels
 @model SearchViewListModels
 
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-@*<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>*@
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
-<script src="~/Scripts/bootstrap.js"></script>
-
-
-
-@*2、bootstrap组件引用*@
-<script src="~/Content/bootstrap/bootstrap.js"></script>
-<link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
-
-@*3、bootstrap table组件以及中文包的引用*@
+<script src="~/Content/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="~/Content/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 <script src="~/Content/bootstrap-table/bootstrap-table.js"></script>
 <link href="~/Content/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
 <script src="~/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-
-@*4、页面Js文件的引用*@
+<script src="~/Content/toastr/toastr.js"></script>
+<link href="~/Content/toastr/toastr.css" rel="stylesheet" />
+<script src="~/Content/timepicker/jquery.datetimepicker.js"></script>
+<link href="~/Content/timepicker/jquery.datetimepicker.css" rel="stylesheet" />
 <script src="~/Scripts/Search/index.js"></script>
+
+
 
 <div class="container-fluid">
     <div class="row-fluid">
@@ -59,13 +55,13 @@
                                     <span>Form：</span>
                                 </td>
                                 <td width="180px">
-                                    <input id="BeginDate" type="date" style="width:180px">
+                                    <input id="BeginDate" type="text" style="width:180px">
                                 </td>
                                 <td width="100px" align="right">
                                     <span>To：</span>
                                 </td>
                                 <td width="180px">
-                                    <input id="EndDate" type="date" style="width:180px">
+                                    <input id="EndDate" type="text" style="width:180px">
                                 </td>
                                 <td width="1px" align="right">
                                     <span>STATId：</span>
@@ -129,45 +125,92 @@
                 </div>
             </div>
             <div>
-                <button id="Add" type="button" class="btn btn-info btn-sm">
+                <button id="btn_Add" type="button" class="btn btn-info btn-sm">
                     <span class="">新增</span>
                 </button>
-                <button id="Download_commmit_model" type="button" class="btn btn-info btn-sm">
+                <button id="btn_Download_commmit_model" type="button" class="btn btn-info btn-sm">
                     <span class="">下载模板</span>
                 </button>
-                <button id="DataExport" type="button" class="btn btn-info btn-sm">
+                <button id="btn_DataExport" type="button" class="btn btn-info btn-sm">
                     <span class="">数据导出</span>
                 </button>
-                <button id="DataInport" type="button" class="btn btn-info btn-sm">
+                <button id="btn_DataImport" type="button" class="btn btn-info btn-sm">
                     <span class="">数据导入</span>
                 </button>
-                <button id="Edit" type="button" class="btn btn-info btn-sm">
+                <button id="btn_Edit" type="button" class="btn btn-info btn-sm">
                     <span class="">编辑</span>
                 </button>
-                <button id="Invalid" type="button" class="btn btn-danger btn-sm">
+                <button id="btn_Invalid" type="button" class="btn btn-danger btn-sm">
                     <span class="">作废</span>
                 </button>
+                <input type="file" name="myfile">
             </div>
             <div class="panel panel-info" style="margin-top:5px">
-                    <div>
-                        @*<div id="toolbar" class="btn-group">
-                            <button id="btn_add" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                            </button>
-                            <button id="btn_edit" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                            </button>
-                            <button id="btn_delete" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                            </button>
-                        </div>*@
-                        <table id="tb_statinfo"></table>
+                <div>
+                    <table id="tb_statinfo"></table>
+                </div>
+                <div class="modal fade" id="dialog_Edit" tabindex="-1" role="dialog" aria-labelledby="dialog_EditLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="dialog_EditLabel">编辑</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="hide">
+                                    <label for="Edit_STATId">STATId</label>
+                                    <input type="text" name="Edit_STATId" class="form-control" id="Edit_STATId" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_QQ">QQ</label>
+                                    <input type="text" name="txt_QQ" class="form-control" id="Edit_QQ" placeholder="1910347321">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_GroupNo">GroupNo</label>
+                                    <select class="form-control" name="Edit_GroupNo" id="Edit_GroupNo">
+                                        <option value="-1"> - 请选择 - </option>
+                                        <option value="1"> - erp - </option>
+                                        <option value="2"> - ec - </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_Id">ID</label>
+                                    <input type="text" name="Edit_Id" class="form-control" id="Edit_Id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_Tag">Tag</label>
+                                    <select class="form-control " id="Edit_Tag" name="Edit_Tag">
+                                        <option value="-1"> - 请选择 - </option>
+                                        <option value="1"> - 春游 - </option>
+                                        <option value="2"> - 体检 - </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_Tips">Tips</label>
+                                    <input type="text" name="Edit_Tips" class="form-control" id="Edit_Tips" placeholder="svb:Cod_Adam">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Edit_Status">Status</label>
+                                    <span>Status</span>
+                                    <select class="form-control " id="Edit_Status" name="Edit_Status">
+                                        <option value="1">有效</option>
+                                        <option value="0">失效</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>取消</button>
+                                <button type="button" id="Edit_btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                            </div>
+                        </div>
                     </div>
-
-
+                </div>
                 </div>
             </div>
         </div>
   </div>
+<script>
+        $("#BeginDate").datetimepicker({ lang: "ch" });
+        $("#EndDate").datetimepicker({ lang: "ch" });
 
-
+</script>

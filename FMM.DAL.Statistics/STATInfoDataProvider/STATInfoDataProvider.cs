@@ -208,16 +208,20 @@ namespace FMM.DAL.Statistics
     }
         private string strCriteriaSqlWhere(STATInfoSearchCriteria criteria) {
             StringBuilder sqlwhere = new StringBuilder(" WHERE 1=1");
-            if(criteria.STATId!=null)
-            sqlwhere.AppendFormat(" AND STATId={0}", criteria.STATId);
-            if (criteria.QQ != null)
+            if (criteria.STATId!=null)
+                sqlwhere.AppendFormat(" AND STATId={0}", criteria.STATId);
+            if (criteria.QQ != -1)
                 sqlwhere.AppendFormat(" AND QQ={0}", criteria.QQ);
             if (criteria.GroupNo != null)
                 sqlwhere.AppendFormat(" AND GroupNo={0}", criteria.GroupNo);
             if (criteria.Tag != null)
                 sqlwhere.AppendFormat(" AND Tag={0}", criteria.Tag);
-            if (criteria.Status != null)
-                sqlwhere.AppendFormat(" AND status={0}", criteria.Status);
+            if (criteria.Status !=-1)
+                sqlwhere.AppendFormat(" AND Status={0}", criteria.Status);
+            if (criteria.BeginDate != null)
+                sqlwhere.AppendFormat(" AND Indate>={0}", criteria.BeginDate);
+            if (criteria.EndDate != null)
+                sqlwhere.AppendFormat(" AND Indate<={0}", criteria.EndDate);
 
             return sqlwhere.ToString();
         }
