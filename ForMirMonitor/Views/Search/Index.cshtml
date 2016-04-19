@@ -22,8 +22,10 @@
 <script src="~/Content/timepicker/jquery.datetimepicker.js"></script>
 <link href="~/Content/timepicker/jquery.datetimepicker.css" rel="stylesheet" />
 <script src="~/Scripts/Search/index.js"></script>
-
-
+<script src="~/Content/upload/vendor/jquery.ui.widget.js"></script>
+<script src="~/Content/upload/jquery.fileupload.js"></script>
+<script src="~/Content/upload/jquery.iframe-transport.js"></script>
+<link href="~/Content/upload/jquery.fileupload.css" rel="stylesheet" />
 
 <div class="container-fluid">
     <div class="row-fluid">
@@ -134,16 +136,16 @@
                 <button id="btn_DataExport" type="button" class="btn btn-info btn-sm">
                     <span class="">数据导出</span>
                 </button>
-                <button id="btn_DataImport" type="button" class="btn btn-info btn-sm">
-                    <span class="">数据导入</span>
-                </button>
+                <span  class="btn btn-info btn-sm fileinput-button" name="btn_DataImport">
+                    <span>数据导入</span>
+                    <input type="file" multiple="" name="files[]"  id="btn_DataImport" >
+                </span>
                 <button id="btn_Edit" type="button" class="btn btn-info btn-sm">
                     <span class="">编辑</span>
                 </button>
                 <button id="btn_Invalid" type="button" class="btn btn-danger btn-sm">
                     <span class="">作废</span>
                 </button>
-                <input type="file" name="myfile">
             </div>
             <div class="panel panel-info" style="margin-top:5px">
                 <div>
@@ -191,7 +193,6 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="Edit_Status">Status</label>
-                                    <span>Status</span>
                                     <select class="form-control " id="Edit_Status" name="Edit_Status">
                                         <option value="1">有效</option>
                                         <option value="0">失效</option>
@@ -212,5 +213,4 @@
 <script>
         $("#BeginDate").datetimepicker({ lang: "ch" });
         $("#EndDate").datetimepicker({ lang: "ch" });
-
 </script>

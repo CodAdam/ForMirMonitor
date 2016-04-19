@@ -145,5 +145,10 @@ namespace FMM.Service.Statistics
         {
             throw new NotImplementedException();
         }
+
+        public void EditStatInfoById(STATInfo statInfo)
+        {
+            statInfoBusiness.EditStatInfoById(statInfo);
+        }
     }
 }

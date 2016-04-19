@@ -13,22 +13,6 @@ $(function () {
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
-    $("#btn_DataImport").click(function () {
-        openFileDialog1.DefaultExt = "*";
-        openFileDialog1.Filter = "alll文件(*.*)|*.*";
-        openFileDialog1.ShowDialog();
-        textBox1.Text = openFileDialog1.FileName;
-        //$.ajax({
-        //    type: "post",
-        //    url: "/home/DownLoad",
-        //    data: { strName: filename, strPath: path },
-        //    dataType: "json",
-        //    success: function (data) {
-        //        alert("下载完成");
-        //    }
-        //});
-        //alert(1);
-    });
     function getQueryModel(){
         var obj={
             "criteria.STATId": $("#STATId").val(),
@@ -42,7 +26,24 @@ $(function () {
         return obj;
     }
 
-    //弹窗div
+    //自定义上传文件插件
+    $('#btn_DataImport').fileupload({
+        
+        type: "post",
+        url: "/Search/ImportSTATInfo",
+        dataType: 'json',
+        data: data,
+
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+            data.context.text('Upload finished.');
+        }
+        
+    });
+
+    //自定义弹窗div插件
     (function ($) {
 
         window.Ewin = function () {
@@ -203,7 +204,6 @@ $(function () {
 
 
 
-
 var TableInit = function () {
     var oTableInit = new Object();
     //初始化Table
@@ -281,7 +281,7 @@ var TableInit = function () {
     return oTableInit;
 };
 
-
+//初始化按钮
 var ButtonInit = function () {
     var oInit = new Object();
     var postdata = {};
@@ -394,8 +394,6 @@ var ButtonInit = function () {
         });
 
         $("#btn_Add").bind("click", function () { window.location.href = '/Commit/Index'; });
-
-        //$("#DataExport").bind("click", function () { window.location.href = '/Search/ExportSTATInfo'; });
 
         $("#btn_DataExport").click(function () {
             var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');

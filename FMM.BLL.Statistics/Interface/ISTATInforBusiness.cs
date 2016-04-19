@@ -66,6 +66,12 @@ namespace FMM.BLL.Statistics
         /// <param name="statinfo"></param>
         DataTable ExportSTATInfo(STATInfoSearchCriteria criteria);
 
+
+        /// <summary>
+        /// 根据STATId更新STATInfo
+        /// </summary>
+        /// <param name="STATInfo"></param>
+        void EditStatInfoById(STATInfo statInfo);
         #endregion
     }
 }

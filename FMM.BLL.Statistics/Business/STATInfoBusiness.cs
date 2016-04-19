@@ -105,5 +105,16 @@ namespace FMM.BLL.Statistics
         public DataTable ExportSTATInfo(STATInfoSearchCriteria criteria) {
             return (statInfoDataAccess.ExportSTATInfo(criteria));
         }
+
+
+
+        /// <summary>
+        /// 根据STATId更新STATInfo
+        /// </summary>
+        /// <param name="STATInfo"></param>
+        public void EditStatInfoById(STATInfo statInfo)
+        {
+            statInfoDataAccess.EditStatInfoById(statInfo);
+        }
     }
 }

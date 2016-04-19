@@ -338,6 +338,10 @@
     <Content Include="Content\font\glyphicons-halflings-regular.svg" />
     <Content Include="Content\toastr\toastr.css" />
     <Content Include="Content\toastr\toastr.js" />
+    <Content Include="Content\upload\jquery.fileupload.css" />
+    <Content Include="Content\upload\jquery.fileupload.js" />
+    <Content Include="Content\upload\jquery.iframe-transport.js" />
+    <Content Include="Content\upload\vendor\jquery.ui.widget.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

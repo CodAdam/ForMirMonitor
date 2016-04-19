@@ -85,16 +85,16 @@ namespace FMM.DAL.Statistics
 
         #endregion
 
-        #region STATInfo
+        #region UpdateSTATInfoById
 
-        readonly string strUpdateRMARule = @"UPDATE [STATDB].[dbo].[STATInfo] SET 
+        readonly string strUpdateSTATInfoById = @"UPDATE [STATDB].[dbo].[STATInfo] SET 
                                                      [QQ]={0}
                                                     ,[GroupNo]={1}
                                                     ,[UserName]={2}
                                                     ,[Tag]={3}
                                                     ,[Tips]={4}
-                                                    ,[Indate]={5}
-                                                    ,[EditDate]={6}
+                                                    ,[EditDate]={5}
+                                                    ,[OpratorId]={6}
                                                     ,[Oprator]={7}
                                                     ,[Status]={8}
                                              WHERE [STATId]={9}";
@@ -166,7 +166,8 @@ namespace FMM.DAL.Statistics
         /// </summary>
         /// <param name="pageSizecriteria"></param>
         /// <returns></returns>
-        public List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria) {
+        public List<STATInfo> getSTATInfoListByCriteria(STATInfoSearchCriteria criteria)
+        {
             StringBuilder sql = new StringBuilder("");
             sql.Append(strSTATInfoSelectSQL);
             sql.Append(strCriteriaSqlWhere(criteria));
@@ -205,10 +206,11 @@ namespace FMM.DAL.Statistics
             //objReader.Close();
 
             return STATInfoList;
-    }
-        private string strCriteriaSqlWhere(STATInfoSearchCriteria criteria) {
+        }
+        private string strCriteriaSqlWhere(STATInfoSearchCriteria criteria)
+        {
             StringBuilder sqlwhere = new StringBuilder(" WHERE 1=1");
-            if (criteria.STATId!=null)
+            if (criteria.STATId != null)
                 sqlwhere.AppendFormat(" AND STATId={0}", criteria.STATId);
             if (criteria.QQ != -1)
                 sqlwhere.AppendFormat(" AND QQ={0}", criteria.QQ);
@@ -216,7 +218,7 @@ namespace FMM.DAL.Statistics
                 sqlwhere.AppendFormat(" AND GroupNo={0}", criteria.GroupNo);
             if (criteria.Tag != null)
                 sqlwhere.AppendFormat(" AND Tag={0}", criteria.Tag);
-            if (criteria.Status !=-1)
+            if (criteria.Status != -1)
                 sqlwhere.AppendFormat(" AND Status={0}", criteria.Status);
             if (criteria.BeginDate != null)
                 sqlwhere.AppendFormat(" AND Indate>={0}", criteria.BeginDate);
@@ -246,7 +248,8 @@ namespace FMM.DAL.Statistics
             {
                 int result = SQLHelper.Update(sql.ToString());
             }
-            catch {
+            catch
+            {
 
             }
         }
@@ -257,7 +260,7 @@ namespace FMM.DAL.Statistics
         /// <param name="Entity"></param>
         private string AddInparaForInsert(STATInfo statinfo)
         {
-            string InsertSTATInfosql ="";
+            string InsertSTATInfosql = "";
             STATInfo InsertModel = new STATInfo();
             InsertModel = MakeInsertModel(statinfo);
             InsertSTATInfosql = String.Format(InsertSTATInfo,
@@ -274,20 +277,19 @@ namespace FMM.DAL.Statistics
             return InsertSTATInfosql;
         }
 
-        private STATInfo MakeInsertModel(STATInfo statinfo) {
+        private STATInfo MakeInsertModel(STATInfo statinfo)
+        {
             STATInfo InsertModel = new STATInfo();
             InsertModel.QQ = statinfo.QQ;
-            InsertModel.GroupNo=statinfo.GroupNo;
-            InsertModel.Tips=statinfo.Tips;
-            //InsertModel.Indate=statinfo.Indate==null ?DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
-            //InsertModel.Eidtdate=statinfo.Eidtdate==null? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"): statinfo.Indate;
-            InsertModel.Indate = statinfo.Indate == null ? DateTime.Now: DateTime.Now;
-            InsertModel.Eidtdate = statinfo.Eidtdate == null ? DateTime.Now: DateTime.Now;
-            InsertModel.OperatorId=statinfo.OperatorId==null?"0":statinfo.OperatorId;
-            InsertModel.UserName=statinfo.UserName;
-            InsertModel.Tag=statinfo.Tag;
-            InsertModel.Operator= statinfo.Operator==null?"0":statinfo.Operator;
-            InsertModel.Status= statinfo.Status==null?1: statinfo.Status;
+            InsertModel.GroupNo = statinfo.GroupNo;
+            InsertModel.Tips = statinfo.Tips;
+            InsertModel.Indate = statinfo.Indate == null ? DateTime.Now : DateTime.Now;
+            InsertModel.Eidtdate = statinfo.Eidtdate == null ? DateTime.Now : DateTime.Now;
+            InsertModel.OperatorId = statinfo.OperatorId == null ? "0" : statinfo.OperatorId;
+            InsertModel.UserName = statinfo.UserName;
+            InsertModel.Tag = statinfo.Tag;
+            InsertModel.Operator = statinfo.Operator == null ? "0" : statinfo.Operator;
+            InsertModel.Status = statinfo.Status == null ? 1 : statinfo.Status;
             return InsertModel;
         }
         /// <summary>
@@ -303,7 +305,8 @@ namespace FMM.DAL.Statistics
         /// Excel导出统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        public DataTable ExportSTATInfo(STATInfoSearchCriteria criteria) {
+        public DataTable ExportSTATInfo(STATInfoSearchCriteria criteria)
+        {
             DataTable ExportSTATInfo = new DataTable();
             StringBuilder sql = new StringBuilder("");
             sql.Append(strSTATInfoSelectSQL);
@@ -312,5 +315,68 @@ namespace FMM.DAL.Statistics
             ds = SQLHelper.GetDataSet(sql.ToString());
             return ds.Tables[0];
         }
+
+        /// <summary>
+        /// 根据STATId更新STATInfo
+        /// </summary>
+        /// <param name="STATInfo"></param>
+        public void EditStatInfoById(STATInfo statinfo)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append(AddInparaForUpdateById(statinfo));
+            try
+            {
+                int result = SQLHelper.Update(sql.ToString());
+            }
+            catch
+            {
+
+            }
+
+        }
+        private string AddInparaForUpdateById(STATInfo statinfo)
+        {
+            string updateSTATInfosql = "";
+            STATInfo UpdateModel = new STATInfo();
+            UpdateModel = MakeUpdateModel(statinfo);
+            updateSTATInfosql = String.Format(strUpdateSTATInfoById,
+                UpdateModel.QQ,
+                UpdateModel.GroupNo,
+                UpdateModel.UserName,
+                UpdateModel.Tag,
+                UpdateModel.Tips,
+                UpdateModel.Eidtdate,
+                UpdateModel.OperatorId,
+                UpdateModel.Operator,
+                UpdateModel.Status,
+                UpdateModel.STATId
+                );
+            return updateSTATInfosql;
+
+
+
+        }
+
+        private STATInfo MakeUpdateModel(STATInfo statinfo)
+        {
+
+            STATInfo UpdateModel = new STATInfo();
+
+            UpdateModel.STATId = statinfo.STATId;
+            UpdateModel.QQ = statinfo.QQ;
+            UpdateModel.GroupNo = statinfo.GroupNo;
+            UpdateModel.UserName = statinfo.UserName;
+            UpdateModel.Tag = statinfo.Tag;
+            UpdateModel.Tips = statinfo.Tips;
+            UpdateModel.Status = statinfo.Status == null ? 1 : statinfo.Status;
+            UpdateModel.Eidtdate = DateTime.Now;
+
+            UpdateModel.OperatorId = statinfo.OperatorId == null ? "0" : statinfo.OperatorId;
+            UpdateModel.Operator = statinfo.Operator == null ? "0" : statinfo.Operator;
+
+            return UpdateModel;
+        }
     }
+
 }
+

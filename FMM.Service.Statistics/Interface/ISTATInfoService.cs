@@ -34,8 +34,11 @@ namespace FMM.Service.Statistics
         /// <param name="criteria"></param>
         /// <returns></returns>
         List<STATInfo> getSTATInfoListbyCriteria(STATInfoSearchCriteria criteria);
-
-
+        /// <summary>
+        /// 根据STATId更新STATInfo
+        /// </summary>
+        /// <param name="STATInfo"></param>
+        void EditStatInfoById(STATInfo statInfo);
         /// <summary>
         /// 根据条件获取STATInfoPagerList
         /// </summary>
