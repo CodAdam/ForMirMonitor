@@ -49,7 +49,7 @@ namespace ForMirMonitor.Controllers
         }
 
         [HttpPost]
-        public ActionResult Invalid() {
+        public ActionResult Invalid(List<long> STATIdlist) {
             return View();
         }
 

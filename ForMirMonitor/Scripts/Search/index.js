@@ -32,7 +32,6 @@ $(function () {
         type: "post",
         url: "/Search/ImportSTATInfo",
         dataType: 'json',
-        data: data,
 
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
@@ -325,7 +324,6 @@ var ButtonInit = function () {
             $.ajax({
                 type: "post",
                 url: "/Search/EditStatInfoById",
-                //data: { "": JSON.stringify(data) },
                 data: data,
                 success: function (data, status) {
                     if (status == "success") {
@@ -362,14 +360,23 @@ var ButtonInit = function () {
                 toastr.error("请选择有效数据");
                 return;
             }
-            Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
+            Ewin.confirm({ message: "确认要作废选择的数据吗？" }).on(function (e) {
                 if (!e) {
                     return;
                 }
+                var data = getCheckedSTATIdlist();
+                function getCheckedSTATIdlist() {
+                    
+                        for (i = 0;i<=arrselections.length-1;i++){
+                            arrselections[i].STATId
+                        }
+                        
+                }
+                 
                 $.ajax({
                     type: "post",
                     url: "/Search/Invalid",
-                    data: { "": JSON.stringify(arrselections) },
+                    data: { "STATIdlist": JSON.stringify(arrselections.STATId) },
                     success: function (data, status) {
                         if (status == "success") {
                             toastr.success('所选数据已作废');
@@ -384,6 +391,8 @@ var ButtonInit = function () {
                     }
 
                 });
+
+
             });
         });
 
@@ -398,7 +407,7 @@ var ButtonInit = function () {
         $("#btn_DataExport").click(function () {
             var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');
             if (arrselections.length <= 0) {
-                Ewin.confirm({ message: "当前没有选中项确定按搜索条件导出数据吗？" }).on(function (e) {
+                Ewin.confirm({ message: "当前没有选中项,确定按搜索条件导出数据吗？" }).on(function (e) {
                     if (!e) {
                         return;
                     }
