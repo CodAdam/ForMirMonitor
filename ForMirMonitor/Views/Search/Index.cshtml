@@ -1,10 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Index";
     Layout = null;
 }
-@using ForMirMonitor.ViewModels
-@model SearchViewListModels
-
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
@@ -57,7 +53,7 @@
                                     <span>Form：</span>
                                 </td>
                                 <td width="180px">
-                                    <input id="BeginDate" type="text" style="width:180px">
+                                    <input id="BeginDate" type="text"  style="width:180px">
                                 </td>
                                 <td width="100px" align="right">
                                     <span>To：</span>
@@ -78,7 +74,7 @@
                                     <input type="text" id="QQ" style="width:180px">
                                 </td>
                                 <td style="width:100px" align="right">
-                                    <button id="Query" type="button" class="btn btn-success btn-sm">
+                                    <button id="btn_Query" type="button" class="btn btn-success btn-sm">
                                         <span class="">Search</span>
                                     </button>
                                 </td>
@@ -116,7 +112,7 @@
                                 <td></td>
                                 <td></td>
                                 <td style="width:100px" align="right">
-                                    <button id="Reset" type="button" class="btn btn-success btn-sm">
+                                    <button id="btn_Reset" type="button" class="btn btn-success btn-sm">
                                         <span class="">&nbsp;Reset&nbsp;</span>
                                     </button>
                                 </td>
@@ -210,7 +206,3 @@
             </div>
         </div>
   </div>
-<script>
-        $("#BeginDate").datetimepicker({ lang: "ch" });
-        $("#EndDate").datetimepicker({ lang: "ch" });
-</script>

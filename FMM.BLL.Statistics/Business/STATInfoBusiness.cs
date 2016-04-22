@@ -75,27 +75,28 @@ namespace FMM.BLL.Statistics
         /// <summary>
         /// 作废STATInfo
         /// </summary>
-        public void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
+        /// <param name="STATIdStr"></param>
+        public bool InvalidStatInfo(string STATIdStr)
         {
-
+            return statInfoDataAccess.InvalidStatInfo(STATIdStr);
         }
 
         /// <summary>
         /// 新建统计信息
         /// </summary>
         /// <param name="statinfo">统计信息实体</param>
-        public void AddSTATInfo(STATInfo statinfo)
+        public bool AddSTATInfo(STATInfo statinfo)
         {
-            statInfoDataAccess.AddSTATInfo(statinfo);
+            return statInfoDataAccess.AddSTATInfo(statinfo);
         }
 
         /// <summary>
         /// Excel导入统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        public void ImportSTATInfo(STATInfo statinfo)
+        public bool ImportSTATInfo(STATInfo statinfo)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -112,9 +113,9 @@ namespace FMM.BLL.Statistics
         /// 根据STATId更新STATInfo
         /// </summary>
         /// <param name="STATInfo"></param>
-        public void EditStatInfoById(STATInfo statInfo)
+        public bool EditStatInfoById(STATInfo statInfo)
         {
-            statInfoDataAccess.EditStatInfoById(statInfo);
+           return statInfoDataAccess.EditStatInfoById(statInfo);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="STATId">主键</param>
         /// <returns></returns>
-        bool ExistSTATInfo(long STATId)
+        public bool ExistSTATInfo(long STATId)
         {
             return true;
         }
@@ -38,7 +38,7 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="STATId"></param>
         /// <returns></returns>
-        STATInfo getSTATInfoByPrimarykey(long STATId)
+        public STATInfo getSTATInfoByPrimarykey(long STATId)
         {
             STATInfo statInfo = new STATInfo();
             return statInfo;
@@ -49,7 +49,7 @@ namespace FMM.Service.Statistics
         /// </summary>
         /// <param name="QQ"></param>
         /// <returns></returns>
-        List<STATInfo> getSTATInfoByRMANumber(long QQ)
+        public List<STATInfo> getSTATInfoByRMANumber(long QQ)
         {
             List<STATInfo> statInfoList = new List<STATInfo>();
             return statInfoList;
@@ -80,58 +80,35 @@ namespace FMM.Service.Statistics
         /// <summary>
         /// 作废STATInfo
         /// </summary>
-        void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
+        public bool InvalidStatInfo(string STATIdStr)
         {
-
+            return statInfoBusiness.InvalidStatInfo(STATIdStr);
         }
 
         /// <summary>
         /// 新建统计信息
         /// </summary>
         /// <param name="statinfo">统计信息实体</param>
-        void AddSTATInfo(STATInfo statinfo)
+        public bool AddSTATInfo(STATInfo statinfo)
         {
-            statInfoBusiness.AddSTATInfo(statinfo);
+           return statInfoBusiness.AddSTATInfo(statinfo);
         }
 
         /// <summary>
         /// Excel导入统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        void ImportSTATInfo(STATInfo statinfo)
+        public bool ImportSTATInfo(STATInfo statinfo)
         {
-
+            return true;
         }
 
-        bool ISTATInfoService.ExistSTATInfo(long STATId)
-        {
-            throw new NotImplementedException();
-        }
-
-        STATInfo ISTATInfoService.getSTATInfoByPrimarykey(long STATId)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<STATInfo> ISTATInfoService.getSTATInfoByRMANumber(long QQ)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<STATInfo> getSTATInfoListbyCriteria(STATInfoSearchCriteria criteria)
         {
             return statInfoBusiness.getSTATInfoListByCriteria(criteria);
         }
 
-        void ISTATInfoService.UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
-        {
-            throw new NotImplementedException();
-        }
-
-        void ISTATInfoService.AddSTATInfo(STATInfo statinfo)
-        {
-            statInfoBusiness.AddSTATInfo(statinfo);
-        }
 
         /// <summary>
         /// Excel导出统计信息
@@ -141,14 +118,10 @@ namespace FMM.Service.Statistics
             return (statInfoBusiness.ExportSTATInfo(criteria));
         }
 
-        void ISTATInfoService.ImportSTATInfo(STATInfo statinfo)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void EditStatInfoById(STATInfo statInfo)
+        public bool EditStatInfoById(STATInfo statInfo)
         {
-            statInfoBusiness.EditStatInfoById(statInfo);
+            return statInfoBusiness.EditStatInfoById(statInfo);
         }
     }
 }

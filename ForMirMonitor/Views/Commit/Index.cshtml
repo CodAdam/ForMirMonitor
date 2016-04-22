@@ -3,26 +3,16 @@
     ViewBag.Title = "Index";
     Layout = null;
 }
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
-<link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css" />
-
-<script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js"></script>
-
-
+<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+<script src="~/Content/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="~/Content/bootstrapvalidator/dist/bootstrapValidator.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrapvalidator/dist/bootstrapValidator.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
 
 <div class="container-fluid">
     <div class="row-fluid" >
@@ -53,12 +43,12 @@
         </div>
         <div class="panel-body">
             <div style="padding: 50px 50px 10px;">
-                <form class="commitfrom" role="form" action="~/Commit/CommitSTATInfo">
+                <form class="commitform" role="form" action="~/Commit/CommitSTATInfo">
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon" >&nbsp;&nbsp;&nbsp;QQ&nbsp;&nbsp;</span>
-                        <input type="text" name="QQ" class="form-control" placeholder="191047321" />
-                        <span style="color:Highlight;display:none"> * 请确认QQ输入正确</span>
+                        <input type="text" class="form-control" name="QQ" placeholder="191047321" />
                     </div>
+                    <input type="text" name="ss" class="form-control" placeholder="191047321" />
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">Group</span>
@@ -67,13 +57,11 @@
                             <option value="1">- 15期vip -</option>
                             <option value="2">- 第5期高级班 -</option>
                         </select>
-                        <span style="color:Highlight;display:none"> * 请选择标签</span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <input type="text" name="ID" class="form-control" placeholder="22-Adam-男-北京">
-                        <span style="color:Highlight;display:none"> * 群昵称</span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
@@ -83,17 +71,27 @@
                             <option value="1">- 前50号学员参加第五期 -</option>
                             <option value="2">- 广州区线下聚会活动 -</option>
                         </select>
-                        <span style="color:Highlight;display:none"> * 请选择标签</span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
                         <span class="input-group-addon">&nbsp;&nbsp;Tips&nbsp;</span>
                         <input type="text" name="Tips" class="form-control" placeholder="svn：Cod_Adam">
-                        <span style=""></span>
                     </div>
                     <br>
                     <div class="input-group input-group-sm ">
                         <button type="submit" class="btn btn-primary" style="width:334px">Commit</button>
+                    </div>
+                </form>
+
+                <form class="registerForm">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username"  placeholder="191047321" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="text" class="form-control" name="email" />
+                       
                     </div>
                 </form>
             </div>
@@ -102,7 +100,7 @@
 </div>
 
 <script>
-$(document).ready(function() {
+$(function() {
     $('.commitform').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -111,31 +109,73 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            QQ: {
-                message: 'The username is not valid',
-                validators: {
-                    notEmpty: {
-                        message: 'The QQ number is required and cannot be empty'
-                    },
-                    stringLength: {
-                        min: 5,
-                        max: 12,
-                        message: 'The username must be more than 5 and less than 12 characters long'
-                    },
-                    regexp: {
-                        regexp: /[1-9][0-9]{4,}/,
-                        message: 'Please write your QQ here'
-                    }
-                }
-            },
-            ID: {
+            //QQ: {
+            //    message: 'The username is not valid',
+            //    validators: {
+            //        notEmpty: {
+            //            message: 'The username is required and cannot be empty'
+            //        },
+            //        stringLength: {
+            //            min: 6,
+            //            max: 30,
+            //            message: 'The username must be more than 6 and less than 30 characters long'
+            //        },
+            //        regexp: {
+            //            regexp: /^[a-zA-Z0-9_]+$/,
+            //            message: 'The username can only consist of alphabetical, number and underscore'
+            //        }
+            //    }
+            //},
+            ssss: {
                 validators: {
                     notEmpty: {
                         message: 'The email is required and cannot be empty'
                     },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
                 }
             }
         }
     });
+   
+        $('.registerForm').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: 'The username is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The username must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_]+$/,
+                            message: 'The username can only consist of alphabetical, number and underscore'
+                        }
+                    }
+                },
+                sss: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The email is required and cannot be empty'
+                        },
+                        emailAddress: {
+                            message: 'The input is not a valid email address'
+                        }
+                    }
+                }
+            }
+        });
+    
 });
 </script>

@@ -38,7 +38,7 @@ namespace FMM.Service.Statistics
         /// 根据STATId更新STATInfo
         /// </summary>
         /// <param name="STATInfo"></param>
-        void EditStatInfoById(STATInfo statInfo);
+        bool EditStatInfoById(STATInfo statInfo);
         /// <summary>
         /// 根据条件获取STATInfoPagerList
         /// </summary>
@@ -50,19 +50,19 @@ namespace FMM.Service.Statistics
         /// <summary>
         /// 作废STATInfo
         /// </summary>
-        void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator);
+        bool InvalidStatInfo(string STATIdStr);
 
         /// <summary>
         /// 新建统计信息
         /// </summary>
         /// <param name="statinfo">统计信息实体</param>
-        void AddSTATInfo(STATInfo statinfo);
+        bool AddSTATInfo(STATInfo statinfo);
 
         /// <summary>
         /// Excel导入统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        void ImportSTATInfo(STATInfo statinfo);
+        bool ImportSTATInfo(STATInfo statinfo);
 
         /// <summary>
         /// Excel导出统计信息

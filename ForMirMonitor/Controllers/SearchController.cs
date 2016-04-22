@@ -18,9 +18,8 @@ namespace ForMirMonitor.Controllers
     public class SearchController : Controller
     {
 
-
         ISTATInfoService STATInfoService = STATInfoServiceContainer.Instance.Container.Resolve<ISTATInfoService>();
-        
+
         // GET: Search
         public ActionResult Index()
         {
@@ -40,7 +39,8 @@ namespace ForMirMonitor.Controllers
         [HttpPost]
         public ActionResult EditStatInfoById(STATInfo statInfo)
         {
-            if (statInfo == null) {
+            if (statInfo == null)
+            {
                 return View();
             }
             STATInfoService.EditStatInfoById(statInfo);
@@ -49,16 +49,18 @@ namespace ForMirMonitor.Controllers
         }
 
         [HttpPost]
-        public ActionResult Invalid(List<long> STATIdlist) {
+        public ActionResult InvalidStatInfo(string STATIdStr)
+        {
+            STATInfoService.InvalidStatInfo(STATIdStr);
             return View();
         }
 
 
         public void ExportSTATInfo(STATInfoSearchCriteria criteria)
-        { 
+        {
 
-            string strHeaderText="";
-            string strFileName="";
+            string strHeaderText = "";
+            string strFileName = "";
             List<STATInfo> statInfoList = new List<STATInfo>();
             DataTable dtSource = STATInfoService.ExportSTATInfo(criteria);
             // = statInfoList;
@@ -79,10 +81,10 @@ namespace ForMirMonitor.Controllers
         /// </summary>   
         /// <param name="strFileName">excel文档路径</param>   
         /// <returns></returns>   
-        public DataTable ImportSTATInfo(string strFileName)
+        public DataTable ImportSTATInfo(string fileName)
         {
             Excelhelper eh = new Excelhelper();
-            return eh.Import(strFileName);
+            return eh.Import(fileName);
         }
     }
 }

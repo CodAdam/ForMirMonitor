@@ -1,30 +1,33 @@
 ﻿
 $(function () {
+
+
     //1.初始化Table
     var oTable = new TableInit();
     oTable.Init();
-
-    ////2.初始化Ewin
-    //var oEwin = new EwinInit();
-    //oEwin.Init();
-
 
     //2.初始化Button的点击事件
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
-    function getQueryModel(){
-        var obj={
-            "criteria.STATId": $("#STATId").val(),
-            "criteria.BeginDate": $("#BeginDate").val(),
-            "criteria.EndDate": $("#EndDate").val(),
-            "criteria.QQ": $("#QQ").val(),
-            "criteria.GroupNO": $("#GroupNO").val(),
-            "criteria.Tag": $("#Tag").val(),
-            "criteria.Status": $("#Status").val(),
-        }
-        return obj;
-    }
+    //datetimepicker插件
+
+    $("#BeginDate").datetimepicker({
+        lang: "ch",
+        format: "Y-m-d",      //格式化日期
+        timepicker: false,    //关闭时间选项
+        yearStart: 2000,     //设置最小年份
+        yearEnd: 2050,        //设置最大年份
+    });
+    $("#EndDate").datetimepicker({
+        lang: "ch",
+        format: "Y-m-d",      //格式化日期
+        timepicker: false,    //关闭时间选项
+        yearStart: '2016',     //设置最小年份
+        yearEnd: 2050,        //设置最大年份
+    });
+    $("#BeginDate").val((new Date()).dateFormat("Y-m-d"));
+    $("#EndDate").val((new Date()).dateFormat("Y-m-d"));
 
     //自定义上传文件插件
     $('#btn_DataImport').fileupload({
@@ -197,7 +200,6 @@ $(function () {
             }();
             })(jQuery);
 
-
 });
 
 
@@ -293,6 +295,51 @@ var ButtonInit = function () {
 
         //    postdata.DEPARTMENT_ID = "";
         //});
+        $("#btn_Reset").click(function () {
+            $("#STATId").val("");
+            $("#BeginDate").val((new Date()).dateFormat("Y-m-d"));
+            $("#EndDate").val((new Date()).dateFormat("Y-m-d"));
+            $("#QQ").val("");
+            $("#GroupNO").val(-1);
+            $("#Tag").val(-1);
+            $("#Status").val(1);
+        });
+
+        $("#btn_Query").click(function () {
+            var data = getQueryModel();
+            $.ajax({
+                type: 'get',
+                url: '/Search/GetStatInfoTable',
+                data: data,
+                success: function (data, status) {
+                    if (status == "success") {
+                        toastr.success('提交数据成功');
+                        $("#tb_statinfo").bootstrapTable('refresh');
+                    }
+                },
+                error: function () {
+                    toastr.error('Error');
+                },
+                complete: function () {
+
+                }
+            });
+        });
+
+        function getQueryModel() {
+            var obj = {
+                limit: 10,   //页面大小
+                offset: 0, //页码
+                "criteria.STATId": $("#STATId").val(),
+                "criteria.BeginDate": $("#BeginDate").val(),
+                "criteria.EndDate": $("#EndDate").val(),
+                "criteria.QQ": $("#QQ").val(),
+                "criteria.GroupNO": $("#GroupNO").val(),
+                "criteria.Tag": $("#Tag").val(),
+                "criteria.Status": $("#Status").val(),
+            }
+            return obj;
+        }
 
         $("#btn_Edit").click(function () {
             var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');
@@ -328,7 +375,7 @@ var ButtonInit = function () {
                 success: function (data, status) {
                     if (status == "success") {
                         toastr.success('提交数据成功');
-                        $("#tb_departments").bootstrapTable('refresh');
+                        $("#tb_statinfo").bootstrapTable('refresh');
                     }
                 },
                 error: function () {
@@ -357,26 +404,18 @@ var ButtonInit = function () {
         $("#btn_Invalid").click(function () {
             var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');
             if (arrselections.length <= 0) {
-                toastr.error("请选择有效数据");
+                toastr.error("请勾选有效数据");
                 return;
             }
             Ewin.confirm({ message: "确认要作废选择的数据吗？" }).on(function (e) {
                 if (!e) {
                     return;
                 }
-                var data = getCheckedSTATIdlist();
-                function getCheckedSTATIdlist() {
-                    
-                        for (i = 0;i<=arrselections.length-1;i++){
-                            arrselections[i].STATId
-                        }
-                        
-                }
-                 
+                var data = getCheckedSTATIdStr();
                 $.ajax({
                     type: "post",
-                    url: "/Search/Invalid",
-                    data: { "STATIdlist": JSON.stringify(arrselections.STATId) },
+                    url: "/Search/InvalidStatInfo",
+                    data: data,
                     success: function (data, status) {
                         if (status == "success") {
                             toastr.success('所选数据已作废');
@@ -396,11 +435,18 @@ var ButtonInit = function () {
             });
         });
 
+        function getCheckedSTATIdStr() {
+            var arrselections = $("#tb_statinfo").bootstrapTable('getSelections');
+            var CheckedSTATIdStr = "";
+            for (i = 0; i <= arrselections.length - 1; i++) {
+                CheckedSTATIdStr += arrselections[i].STATId + ",";
+            }
+            CheckedSTATIdStr = CheckedSTATIdStr.substring(0, CheckedSTATIdStr.length - 1);
+            return { "STATIdStr": CheckedSTATIdStr, };
+        }
+
         $("#Download_commmit_model").bind("click", function () { window.location.href = '/DownLoad/Commit_STATModel.xlsx'; });
 
-        $("#Query").click(function () {
-            $("#tb_statinfo").bootstrapTable('refresh');
-        });
 
         $("#btn_Add").bind("click", function () { window.location.href = '/Commit/Index'; });
 

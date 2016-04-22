@@ -100,6 +100,9 @@ namespace FMM.DAL.Statistics
                                              WHERE [STATId]={9}";
 
         #endregion
+        readonly string strInvalidStatInfo = @"UPDATE [STATDB].[dbo].[STATInfo] SET 
+                                                    ,[Status]=0
+                                             WHERE [STATId]= in ({0})";
         #endregion 
         #region 判断数据是否存在
         /// <summary>
@@ -228,30 +231,19 @@ namespace FMM.DAL.Statistics
             return sqlwhere.ToString();
         }
 
-        /// <summary>
-        /// 作废STATInfo
-        /// </summary>
-        public void UpdateSTATInfoStatus(int status, List<long> STATInfo, int OpratorID, string Oprator)
-        {
-
-        }
 
         /// <summary>
         /// 新建统计信息
         /// </summary>
         /// <param name="statinfo">统计信息实体</param>
-        public void AddSTATInfo(STATInfo statinfo)
+        public bool AddSTATInfo(STATInfo statinfo)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append(AddInparaForInsert(statinfo));
-            try
-            {
-                int result = SQLHelper.Update(sql.ToString());
-            }
-            catch
-            {
 
-            }
+
+            int result = SQLHelper.Update(sql.ToString());
+            return result > 0;
         }
         /// <summary>
         /// 新增用到的参数
@@ -296,9 +288,9 @@ namespace FMM.DAL.Statistics
         /// Excel导入统计信息
         /// </summary>
         /// <param name="statinfo"></param>
-        public void ImportSTATInfo(STATInfo statinfo)
+        public bool ImportSTATInfo(STATInfo statinfo)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -320,18 +312,12 @@ namespace FMM.DAL.Statistics
         /// 根据STATId更新STATInfo
         /// </summary>
         /// <param name="STATInfo"></param>
-        public void EditStatInfoById(STATInfo statinfo)
+        public bool EditStatInfoById(STATInfo statinfo)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append(AddInparaForUpdateById(statinfo));
-            try
-            {
-                int result = SQLHelper.Update(sql.ToString());
-            }
-            catch
-            {
-
-            }
+            int result = SQLHelper.Update(sql.ToString());
+            return result > 0;
 
         }
         private string AddInparaForUpdateById(STATInfo statinfo)
@@ -375,6 +361,22 @@ namespace FMM.DAL.Statistics
             UpdateModel.Operator = statinfo.Operator == null ? "0" : statinfo.Operator;
 
             return UpdateModel;
+        }
+
+        /// <summary>
+        /// 作废STATInfo
+        /// </summary>
+        /// <param name="STATIdStr"></param>
+        public bool InvalidStatInfo(string STATIdStr)
+        { 
+            StringBuilder sql = new StringBuilder();
+            sql.Append(AddInparaForInvalidStatInfo(STATIdStr));
+            int result = SQLHelper.Update(sql.ToString());
+            return result > 0;
+        }
+        private string AddInparaForInvalidStatInfo(string STATIdStr)
+        {
+            return String.Format(strInvalidStatInfo, STATIdStr);
         }
     }
 
