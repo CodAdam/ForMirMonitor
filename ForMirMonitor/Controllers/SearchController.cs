@@ -12,6 +12,7 @@ using System.Data;
 using System.Web;
 using System.Text;
 using FMM.Common.Helper;
+using System.Threading.Tasks;
 
 namespace ForMirMonitor.Controllers
 {
@@ -85,6 +86,18 @@ namespace ForMirMonitor.Controllers
         {
             Excelhelper eh = new Excelhelper();
             return eh.Import(fileName);
+        }
+
+        [HttpPost]
+        public JsonResult bar(int totalcountc) {
+            int curcountc = 1;
+            Task t1 = Task.Factory.StartNew(() => {
+                for (; curcountc < totalcountc; curcountc++)
+                {
+                    
+                }
+            });
+            return Json(new { curcount=curcountc,totalcountc=totalcountc}, JsonRequestBehavior.AllowGet);
         }
     }
 }
