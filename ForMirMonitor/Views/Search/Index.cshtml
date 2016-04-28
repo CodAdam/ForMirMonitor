@@ -29,7 +29,7 @@
         <div class="progress progress-striped active" id="barc" style="display:none">
             <div id="bar" class="progress-bar progress-bar-success " role="progressbar"
                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 1%;display:none">
+                 style="width: 1%;">
             </div>
         </div>
         <button id="bt" type="button" class="btn btn-info btn-sm">
@@ -222,7 +222,21 @@
     $(function () {
         var barpersentage = 0;
         $("#bt").click(function () {
-           
+            $.ajax({
+                dataType: "json",
+                type: 'post',
+                data: { "totalcountc": "999999999" },
+                url: '/Search/count',
+                success: function (data, status) {
+
+                },
+                error: function () {
+
+                },
+                complete: function () {
+                }
+
+            });
             check();
         });
         function check() {
@@ -230,7 +244,7 @@
             $.ajax({ 
                 dataType: "json",
                 type: 'post',
-                data: { "totalcountc": "10000" },
+                data: { "totalcountc": "999999999" },
                 url: '/Search/bar',
                 success: function (data, status) {
                     if (status == "success"&&data.curcount != data.totalcountc) {
@@ -242,6 +256,10 @@
                     }
                 },
                 error: function () {
+                    //$("#bar").addClass("progress-bar-info");
+                    //$("#bar").addClass("progress-bar-warning");
+                    //$("#bar").addClass("progress-bar-success");
+                    $("#bar").addClass("progress-bar-danger");
                     barerror();
                 },
                 complete: function () {
@@ -257,19 +275,22 @@
             barmessage("bar error");
             $("#barc").hide();
             barpersentage = 0;
+            $("#bar").css("width", "0%");
         }
         function barsuccess() {
-            progress(1, 1, false)
-            
-            barmessage("bar error");
+            progress(1, 1, false);
+            barmessage("bar success");
             $("#barc").hide();
             barpersentage = 0;
+            $("#bar").css("width", "0%");
+
         }
         function barcomplete() {
             progress(1, 1, false)
             barpersentage = 0;
             $("#barc").hide();
             barmessage("bar complete");
+            $("#bar").css("width", "0%");
         }
 
 
@@ -281,14 +302,18 @@
                 if (totalcount == 0)
                     totalcount = 1;
 
-                for (var i = 0 ; barpersentage <= 100&& i<=(curcount / totalcount * 100 - barpersentage); i++ ) {
-                    
-                    $("#bar").css("width", barpersentage + i + "%");
+                for (var i = 0.01 ; barpersentage <= 100 && barpersentage <= (curcount / totalcount * 100); barpersentage += i) {
+                    $("#bar").css("width", barpersentage + "%");
                 }
             }
             else {
-                for (var i = 0 ; i>100; i++) {
-                    $("#bar").css("width", barpersentage + i + "%");
+                if (barpersentage != 100) {
+                    for (var i = 0.01 ; barpersentage <= 100; barpersentage += i) {
+                        $("#bar").css("width", barpersentage + "%");
+                    }
+                   
+                    alert("100%完成");
+                    
                 }
             }
         }

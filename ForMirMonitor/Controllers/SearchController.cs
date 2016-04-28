@@ -88,16 +88,25 @@ namespace ForMirMonitor.Controllers
             return eh.Import(fileName);
         }
 
+
+        public static int curcountc = 1;
         [HttpPost]
         public JsonResult bar(int totalcountc) {
-            int curcountc = 1;
+
+            return Json(new { curcount=curcountc,totalcountc=totalcountc}, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public void count(int totalcountc)
+        {
             Task t1 = Task.Factory.StartNew(() => {
                 for (; curcountc < totalcountc; curcountc++)
                 {
-                    
+
                 }
             });
-            return Json(new { curcount=curcountc,totalcountc=totalcountc}, JsonRequestBehavior.AllowGet);
+            curcountc = 0;
         }
     }
 }
