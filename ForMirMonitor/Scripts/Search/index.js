@@ -32,16 +32,32 @@ $(function () {
     //自定义上传文件插件
     $('#btn_DataImport').fileupload({
         
-        type: "post",
         url: "/Search/ImportSTATInfo",
-        dataType: 'json',
+        formData: { param1: "p1", param2: "p2" },//如果需要额外添加参数可以在这里添加
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#fbar').css(
+                'width',
+                progress + '%'
+            );
+        },
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo(document.body);
+                });
+            },
 
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });
-            data.context.text('Upload finished.');
-        }
+
+        //type: "post",
+        //url: "/Search/ImportSTATInfo",
+        ////dataType: 'json',
+
+        //done: function (e, data) {
+        //    $.each(data.result.files, function (index, file) {
+        //        $('<p/>').text(file.name).appendTo(document.body);
+        //    });
+        //    data.context.text('Upload finished.');
+        //}
         
     });
 

@@ -13,6 +13,7 @@ using System.Web;
 using System.Text;
 using FMM.Common.Helper;
 using System.Threading.Tasks;
+using NPOI.SS.UserModel;
 
 namespace ForMirMonitor.Controllers
 {
@@ -82,25 +83,36 @@ namespace ForMirMonitor.Controllers
         /// </summary>   
         /// <param name="strFileName">excel文档路径</param>   
         /// <returns></returns>   
-        public DataTable ImportSTATInfo(string fileName)
+        public DataTable ImportSTATInfo()
         {
+            string strE = "";
+            strE += Request.Files[0].FileName;
+            string strUpPath = @"../DataExcel/";// +@"\";
+            string strUrl = Server.MapPath(strUpPath + @"/" + strE);
+            //上传文件
+            Request.Files[0].SaveAs(strUrl);
+            //处理EXcel
+            string excelname = strUrl;
+
             Excelhelper eh = new Excelhelper();
-            return eh.Import(fileName);
+            return eh.Import(strUrl);
         }
 
 
         public static int curcountc = 1;
         [HttpPost]
-        public JsonResult bar(int totalcountc) {
+        public JsonResult bar(int totalcountc)
+        {
 
-            return Json(new { curcount=curcountc,totalcountc=totalcountc}, JsonRequestBehavior.AllowGet);
+            return Json(new { curcount = curcountc, totalcountc = totalcountc }, JsonRequestBehavior.AllowGet);
 
         }
 
         [HttpPost]
         public void count(int totalcountc)
         {
-            Task t1 = Task.Factory.StartNew(() => {
+            Task t1 = Task.Factory.StartNew(() =>
+            {
                 for (; curcountc < totalcountc; curcountc++)
                 {
 

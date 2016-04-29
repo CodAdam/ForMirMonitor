@@ -451,6 +451,7 @@
     <Folder Include="Content\bootstrap3-editable\css\" />
     <Folder Include="Content\bootstrap3-editable\img\" />
     <Folder Include="Content\bootstrap3-editable\js\" />
+    <Folder Include="Upload\" />
     <Folder Include="Views\Common\" />
     <Folder Include="Views\test\" />
   </ItemGroup>
